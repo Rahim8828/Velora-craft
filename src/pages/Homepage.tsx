@@ -4,6 +4,12 @@ import { Truck, Wrench, Shield, RotateCcw, IndianRupee, Sparkles, TreePine, Arro
 import ProductCard from '../components/ProductCard';
 import LazyImage from '../components/LazyImage';
 
+// ─── Hero Asset Imports ─────────────────────────────────────────────
+import heroImg1 from '../assets/Home 1.webp';
+import heroImg2 from '../assets/Home 2.webp';
+import heroImg3 from '../assets/Home 3.webp';
+import heroImg4 from '../assets/Home 4.webp';
+
 // ─── Category Asset Imports ─────────────────────────────────────────
 import sofaImg from '../assets/Sofa.webp';
 import sofaCumbedImg from '../assets/Sofa Cumbed.webp';
@@ -31,7 +37,7 @@ const heroBanners = [
     description: 'Handmade solid-wood furniture with factory-direct pricing. Free delivery across Mumbai.',
     cta: 'Shop Collection',
     ctaLink: '/category/sofa-sets',
-    image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1920&h=1080&fit=crop&crop=center',
+    image: heroImg1,
     bgColor: 'from-black/70 via-black/40 to-transparent',
     tag: 'Bestsellers',
   },
@@ -42,7 +48,7 @@ const heroBanners = [
     description: 'Get bespoke furniture built to your exact specifications. Free 3D design consultation.',
     cta: 'Start Customizing',
     ctaLink: '/custom-furniture',
-    image: 'https://images.unsplash.com/photo-1618220179428-22790b461013?w=1920&h=1080&fit=crop&crop=center',
+    image: heroImg2,
     bgColor: 'from-black/70 via-black/40 to-transparent',
     tag: 'New Service',
   },
@@ -53,9 +59,20 @@ const heroBanners = [
     description: 'Transform your bedroom with our premium bed sets, wardrobes & dressers.',
     cta: 'Shop Bedroom',
     ctaLink: '/category/beds',
-    image: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=1920&h=1080&fit=crop&crop=center',
+    image: heroImg3,
     bgColor: 'from-black/70 via-black/40 to-transparent',
     tag: 'Limited Offer',
+  },
+  {
+    id: 4,
+    title: 'Elevate Your Living Space',
+    subtitle: 'Exclusive Designs',
+    description: 'Discover our curated range of modern & classic furniture for every room.',
+    cta: 'Explore Now',
+    ctaLink: '/category/sofa-sets',
+    image: heroImg4,
+    bgColor: 'from-black/70 via-black/40 to-transparent',
+    tag: 'Trending',
   },
 ];
 
