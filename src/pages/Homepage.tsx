@@ -101,10 +101,10 @@ const shopByCategory = [
 
 // ─── Budget Range Data ──────────────────────────────────────────────
 const budgetRanges = [
-  { label: 'Under ₹10K', range: 'Budget Friendly', link: '/category/sofa-sets', color: 'from-[#D4BC7E] to-[#C6A75E]' },
-  { label: '₹10K – ₹25K', range: 'Best Value', link: '/category/sofa-sets', color: 'from-[#C6A75E] to-[#B0914A]' },
-  { label: '₹25K – ₹50K', range: 'Premium', link: '/category/sofa-sets', color: 'from-[#B0914A] to-[#4A2F24]' },
-  { label: '₹50K+', range: 'Luxury', link: '/category/sofa-sets', color: 'from-[#4A2F24] to-[#3A2119]' },
+  { label: 'Under ₹10K', range: 'Budget Friendly', link: '/category/sofa-sets', color: 'from-[#C6A75E] to-[#B0914A]' },
+  { label: '₹10K – ₹25K', range: 'Best Value', link: '/category/sofa-sets', color: 'from-[#B0914A] to-[#8B7340]' },
+  { label: '₹25K – ₹50K', range: 'Premium', link: '/category/sofa-sets', color: 'from-[#6B5530] to-[#4A2F24]' },
+  { label: '₹50K+', range: 'Luxury', link: '/category/sofa-sets', color: 'from-[#4A2F24] to-[#2C1A14]' },
 ];
 
 // ─── Testimonial Data ───────────────────────────────────────────────
@@ -255,7 +255,7 @@ const Homepage = () => {
       {/* ═══ SECTION 2: TRUST/SERVICE STRIP ═══ */}
       <section className="bg-[#F5EFE6] border-y border-[#E5DCD0]">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-[#E5DCD0]">
+          <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-[#E5DCD0]/60">
             {[
               { icon: <Truck className="w-6 h-6 text-[#C6A75E]" />, title: 'Free Delivery', desc: 'Across Mumbai' },
               { icon: <Wrench className="w-6 h-6 text-[#C6A75E]" />, title: 'Expert Assembly', desc: 'Free Installation' },
@@ -286,10 +286,10 @@ const Homepage = () => {
                 to={cat.link}
                 className="group flex flex-col items-center gap-2 sm:gap-3"
               >
-                <div className="w-[85px] h-[85px] sm:w-[120px] sm:h-[120px] md:w-[140px] md:h-[140px] lg:w-[170px] lg:h-[170px] rounded-full bg-[#F5EFE6] overflow-hidden flex items-center justify-center group-hover:shadow-lg group-hover:scale-105 transition-all duration-300">
+                <div className="w-[85px] h-[85px] sm:w-[120px] sm:h-[120px] md:w-[140px] md:h-[140px] lg:w-[170px] lg:h-[170px] rounded-full bg-[#F5EFE6] border border-[#E5DCD0] overflow-hidden flex items-center justify-center shadow-sm group-hover:shadow-lg group-hover:scale-105 transition-all duration-300">
                   {cat.isNew ? (
                     <div className="w-full h-full bg-gradient-to-br from-[#4A2F24] to-[#3A2119] flex items-center justify-center">
-                      <Sparkles className="w-10 h-10 sm:w-12 sm:h-12 text-[#C6A75E]" />
+                      <Sparkles className="w-10 h-10 sm:w-12 sm:h-12 text-white" />
                     </div>
                   ) : (
                     <img
@@ -313,7 +313,7 @@ const Homepage = () => {
                 to={cat.link}
                 className="group flex flex-col items-center gap-2 sm:gap-3"
               >
-                <div className="w-[85px] h-[85px] sm:w-[120px] sm:h-[120px] md:w-[140px] md:h-[140px] lg:w-[170px] lg:h-[170px] rounded-full bg-[#F5EFE6] overflow-hidden flex items-center justify-center group-hover:shadow-lg group-hover:scale-105 transition-all duration-300">
+                <div className="w-[85px] h-[85px] sm:w-[120px] sm:h-[120px] md:w-[140px] md:h-[140px] lg:w-[170px] lg:h-[170px] rounded-full bg-[#F5EFE6] border border-[#E5DCD0] overflow-hidden flex items-center justify-center shadow-sm group-hover:shadow-lg group-hover:scale-105 transition-all duration-300">
                   <img
                     src={cat.image}
                     alt={cat.name}
@@ -338,7 +338,7 @@ const Homepage = () => {
               <div className="absolute inset-0 bg-gradient-to-r from-[#4A2F24]/90 to-transparent" />
               <div className="absolute inset-0 flex items-center p-6 md:p-8">
                 <div>
-                  <span className="text-[#C6A75E] text-xs font-bold uppercase tracking-widest">Bespoke</span>
+                  <span className="text-[#C6A75E] text-xs font-bold uppercase tracking-widest drop-shadow-sm">Bespoke</span>
                   <h3 className="text-white text-2xl md:text-3xl font-bold mt-1 mb-2">Custom Furniture</h3>
                   <p className="text-white/70 text-sm mb-4 max-w-xs">Design your dream piece. Free consultation & 3D preview.</p>
                   <span className="inline-flex items-center gap-1 text-white text-sm font-semibold group-hover:gap-2 transition-all">
@@ -352,7 +352,7 @@ const Homepage = () => {
               <div className="absolute inset-0 bg-gradient-to-r from-[#4A2F24]/90 to-transparent" />
               <div className="absolute inset-0 flex items-center p-6 md:p-8">
                 <div>
-                  <span className="text-[#C6A75E] text-xs font-bold uppercase tracking-widest">Services</span>
+                  <span className="text-[#C6A75E] text-xs font-bold uppercase tracking-widest drop-shadow-sm">Services</span>
                   <h3 className="text-white text-2xl md:text-3xl font-bold mt-1 mb-2">Repair & Polish</h3>
                   <p className="text-white/70 text-sm mb-4 max-w-xs">Restore your beloved furniture. Starting at ₹2,999.</p>
                   <span className="inline-flex items-center gap-1 text-white text-sm font-semibold group-hover:gap-2 transition-all">
@@ -383,7 +383,7 @@ const Homepage = () => {
           <SectionHeader title="Shop by Room" subtitle="Find the perfect furniture for every space in your home" />
           <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
             {rooms.map((room) => (
-              <Link key={room.name} to={room.link} className="group relative overflow-hidden rounded-2xl aspect-[3/4] block shadow-md hover:shadow-xl transition-shadow">
+              <Link key={room.name} to={room.link} className="group relative overflow-hidden rounded-2xl aspect-[4/5] sm:aspect-[3/4] block shadow-md hover:shadow-xl transition-shadow">
                 <LazyImage src={room.image} alt={room.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-5">
@@ -422,7 +422,7 @@ const Homepage = () => {
         <div className="container mx-auto px-4">
           <SectionHeader title="New Arrivals" subtitle="Fresh designs just added to our collection" ctaText="See All New" ctaLink="/category/sofa-sets" />
           <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
-            {featuredProducts.slice(0, 4).map((product) => (
+            {featuredProducts.slice(4, 8).map((product) => (
               <ProductCard key={`new-${product.id}`} product={product} onAddToCart={handleAddToCart} onAddToWishlist={handleAddToWishlist} onProductClick={handleProductClick} />
             ))}
           </div>
@@ -491,7 +491,7 @@ const Homepage = () => {
             <p className="text-white/60 text-xs sm:text-sm mb-4 sm:mb-6">Subscribe for 10% off your first order, new arrivals, and special deals</p>
             <form className="flex flex-col sm:flex-row gap-2 sm:gap-3 max-w-lg mx-auto" onSubmit={(e) => e.preventDefault()}>
               <input type="email" placeholder="Enter your email address" className="flex-1 px-4 py-2.5 sm:py-3 rounded-lg bg-white/10 border border-white/20 text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#C6A75E] placeholder:text-white/40" required />
-              <button type="submit" className="bg-[#C6A75E] text-white px-6 py-2.5 sm:py-3 rounded-lg font-semibold text-sm hover:bg-[#B0914A] transition-colors whitespace-nowrap">Subscribe</button>
+              <button type="submit" className="bg-white text-[#4A2F24] px-6 py-2.5 sm:py-3 rounded-lg font-semibold text-sm hover:bg-[#C6A75E] hover:text-white transition-colors whitespace-nowrap">Subscribe</button>
             </form>
             <p className="text-white/40 text-[10px] sm:text-xs mt-3">No spam, unsubscribe anytime. We respect your privacy.</p>
           </div>
@@ -509,7 +509,7 @@ const SectionHeader = ({ title, subtitle, ctaText, ctaLink }: { title: string; s
       {subtitle && <p className="text-gray-500 text-xs sm:text-sm">{subtitle}</p>}
     </div>
     {ctaText && ctaLink && (
-      <Link to={ctaLink} className="inline-flex items-center gap-1 text-[#C6A75E] font-semibold text-xs sm:text-sm hover:text-[#B0914A] transition-colors whitespace-nowrap group">
+      <Link to={ctaLink} className="inline-flex items-center gap-1 text-[#C6A75E] font-semibold text-xs sm:text-sm hover:text-[#B0914A] transition-colors whitespace-nowrap group border border-[#C6A75E]/30 px-3 py-1.5 rounded-full hover:border-[#C6A75E] hover:bg-[#C6A75E]/5">
         {ctaText}
         <svg className="w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
       </Link>

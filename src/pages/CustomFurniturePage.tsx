@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from 'react';
+import { Link } from 'react-router-dom';
 import { Phone, Mail, MessageCircle } from 'lucide-react';
 import { usePageMeta } from '../hooks/usePageMeta';
 
@@ -87,6 +88,13 @@ export default function CustomFurniturePage() {
 
   return (
     <div className="container mx-auto px-4 py-8">
+      {/* Breadcrumb */}
+      <nav className="text-sm text-gray-500 mb-6">
+        <Link to="/" className="hover:text-[#C6A75E] transition-colors">Home</Link>
+        <span className="mx-2">/</span>
+        <span className="text-gray-800 font-medium">Custom Furniture</span>
+      </nav>
+
       {/* Hero Section */}
       <div className="bg-gradient-to-r from-[#F5EFE6] to-[#EDE4D6] rounded-lg p-8 mb-8">
         <h1 className="text-4xl font-bold text-gray-900 mb-4">

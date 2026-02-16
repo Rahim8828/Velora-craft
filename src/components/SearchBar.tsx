@@ -30,11 +30,11 @@ const SearchBar = ({ onSearch, placeholder = 'Search...' }: SearchBarProps) => {
         onChange={(e) => setQuery(e.target.value)}
         onKeyDown={handleKeyDown}
         placeholder={placeholder}
-        className="w-full px-4 py-2 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+        className="w-full px-4 py-2 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C6A75E] focus:border-transparent"
       />
       <button
         type="submit"
-        className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-blue-600 transition-colors"
+        className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-[#C6A75E] transition-colors"
         aria-label="Search"
       >
         <svg
