@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 
 const announcements = [
-  'FREE Delivery across Mumbai on all orders!',
   'Flat 20% OFF on Custom Furniture — Use code CUSTOM20',
   'Premium Polish Services starting at ₹2,999',
   'New Arrivals: Luxury Sofa Collection 2026 is here!',
