@@ -65,12 +65,12 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-[#4A2F24] text-gray-300">
+    <footer className="bg-[#F5EFE6] text-gray-600">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div>
-            <h3 className="text-white text-xl font-bold mb-4">A1 Furniture Studio</h3>
+            <h3 className="text-gray-900 text-xl font-bold mb-4">A1 Furniture Studio</h3>
             <p className="text-sm mb-4">
               Premium quality furniture with factory-direct pricing. Custom-made furniture,
               repair, and polish services in Mumbai.
@@ -78,7 +78,7 @@ const Footer = () => {
             <div className="space-y-2 text-sm">
               <p className="flex items-start">
                 <svg
-                  className="w-5 h-5 mr-2 mt-0.5 flex-shrink-0"
+                  className="w-5 h-5 mr-2 mt-0.5 flex-shrink-0 text-[#C6A75E]"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -100,7 +100,7 @@ const Footer = () => {
               </p>
               <p className="flex items-center">
                 <svg
-                  className="w-5 h-5 mr-2 flex-shrink-0"
+                  className="w-5 h-5 mr-2 flex-shrink-0 text-[#C6A75E]"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -112,13 +112,13 @@ const Footer = () => {
                     d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
                   />
                 </svg>
-                <a href="tel:+919876543210" className="hover:text-white transition-colors">
+                <a href="tel:+919876543210" className="hover:text-[#C6A75E] transition-colors">
                   +91 98765 43210
                 </a>
               </p>
               <p className="flex items-center">
                 <svg
-                  className="w-5 h-5 mr-2 flex-shrink-0"
+                  className="w-5 h-5 mr-2 flex-shrink-0 text-[#C6A75E]"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -132,7 +132,7 @@ const Footer = () => {
                 </svg>
                 <a
                   href="mailto:info@a1furniturestudio.com"
-                  className="hover:text-white transition-colors"
+                  className="hover:text-[#C6A75E] transition-colors"
                 >
                   info@a1furniturestudio.com
                 </a>
@@ -142,13 +142,13 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-white text-lg font-semibold mb-4">Quick Links</h3>
+            <h3 className="text-gray-900 text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.path}>
                   <Link
                     to={link.path}
-                    className="text-sm hover:text-white transition-colors"
+                    className="text-sm hover:text-[#C6A75E] transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -159,13 +159,13 @@ const Footer = () => {
 
           {/* Categories */}
           <div>
-            <h3 className="text-white text-lg font-semibold mb-4">Categories</h3>
+            <h3 className="text-gray-900 text-lg font-semibold mb-4">Categories</h3>
             <ul className="space-y-2">
               {categories.map((category) => (
                 <li key={category.path}>
                   <Link
                     to={category.path}
-                    className="text-sm hover:text-white transition-colors"
+                    className="text-sm hover:text-[#C6A75E] transition-colors"
                   >
                     {category.label}
                   </Link>
@@ -176,25 +176,25 @@ const Footer = () => {
 
           {/* Customer Support */}
           <div>
-            <h3 className="text-white text-lg font-semibold mb-4">Customer Support</h3>
+            <h3 className="text-gray-900 text-lg font-semibold mb-4">Customer Support</h3>
             <ul className="space-y-2 text-sm mb-4">
               <li>
-                <Link to="/shipping-policy" className="hover:text-white transition-colors">
+                <Link to="/shipping-policy" className="hover:text-[#C6A75E] transition-colors">
                   Shipping Policy
                 </Link>
               </li>
               <li>
-                <Link to="/return-policy" className="hover:text-white transition-colors">
+                <Link to="/return-policy" className="hover:text-[#C6A75E] transition-colors">
                   Return Policy
                 </Link>
               </li>
               <li>
-                <Link to="/warranty" className="hover:text-white transition-colors">
+                <Link to="/warranty" className="hover:text-[#C6A75E] transition-colors">
                   Warranty Information
                 </Link>
               </li>
               <li>
-                <Link to="/faq" className="hover:text-white transition-colors">
+                <Link to="/faq" className="hover:text-[#C6A75E] transition-colors">
                   FAQ
                 </Link>
               </li>
@@ -208,17 +208,17 @@ const Footer = () => {
         </div>
 
         {/* Social Media & WhatsApp */}
-        <div className="border-t border-white/10 mt-8 pt-8">
+        <div className="border-t border-[#E5DCD0] mt-8 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center space-x-4 mb-4 md:mb-0">
-              <span className="text-sm">Follow Us:</span>
+              <span className="text-sm text-gray-500">Follow Us:</span>
               {socialMedia.map((social) => (
                 <a
                   key={social.name}
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-white transition-colors"
+                  className="text-gray-500 hover:text-[#C6A75E] transition-colors"
                   aria-label={social.name}
                 >
                   {social.icon}
@@ -238,7 +238,7 @@ const Footer = () => {
         </div>
 
         {/* Copyright */}
-        <div className="border-t border-white/10 mt-8 pt-8 text-center text-sm">
+        <div className="border-t border-[#E5DCD0] mt-8 pt-8 text-center text-sm text-gray-500">
           <p>
             &copy; {currentYear} A1 Furniture Studio. All rights reserved. | Trusted Local Brand
             Since 2010
