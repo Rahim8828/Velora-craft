@@ -430,11 +430,11 @@ const Homepage = () => {
       </section>
 
       {/* ═══ SECTION 9: WHY CHOOSE US ═══ */}
-      <section className="py-10 md:py-16 bg-[#4A2F24] text-white">
+      <section className="py-10 md:py-16 bg-[#F5EFE6]">
         <div className="container mx-auto px-4">
           <div className="text-center mb-8 md:mb-12">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-2 sm:mb-3">Why Choose A1 Furniture Studio</h2>
-            <p className="text-white/60 text-xs sm:text-sm max-w-xl mx-auto">Trusted by 5,000+ happy customers across Mumbai since 2010</p>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-2 sm:mb-3">Why Choose A1 Furniture Studio</h2>
+            <p className="text-gray-500 text-xs sm:text-sm max-w-xl mx-auto">Trusted by 5,000+ happy customers across Mumbai since 2010</p>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 max-w-6xl mx-auto">
             {[
@@ -445,9 +445,9 @@ const Homepage = () => {
               { icon: <Shield className="w-6 h-6 sm:w-7 sm:h-7" />, title: '5-Year Warranty', desc: 'Quality guaranteed' },
             ].map((item) => (
               <div key={item.title} className="text-center group">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white/10 rounded-xl sm:rounded-2xl flex items-center justify-center mx-auto mb-3 sm:mb-4 group-hover:bg-[#C6A75E]/30 transition-colors">{item.icon}</div>
-                <h3 className="font-semibold mb-0.5 sm:mb-1 text-xs sm:text-sm md:text-base">{item.title}</h3>
-                <p className="text-white/50 text-[10px] sm:text-xs">{item.desc}</p>
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white rounded-xl sm:rounded-2xl flex items-center justify-center mx-auto mb-3 sm:mb-4 text-[#C6A75E] shadow-sm group-hover:shadow-md group-hover:scale-105 transition-all duration-300">{item.icon}</div>
+                <h3 className="font-semibold text-gray-900 mb-0.5 sm:mb-1 text-xs sm:text-sm md:text-base">{item.title}</h3>
+                <p className="text-gray-500 text-[10px] sm:text-xs">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -460,18 +460,18 @@ const Homepage = () => {
           <SectionHeader title="What Our Customers Say" subtitle="Real stories from real customers" />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 max-w-6xl mx-auto">
             {testimonials.map((t) => (
-              <div key={t.name} className="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition-shadow border border-gray-100">
+              <div key={t.name} className="bg-[#FAF8F5] rounded-2xl p-5 sm:p-6 hover:shadow-md transition-all duration-300 border border-[#EDE4D6]">
                 <div className="flex gap-0.5 mb-3">
                   {[...Array(5)].map((_, i) => (
-                    <svg key={i} className={`w-4 h-4 ${i < t.rating ? 'text-[#C6A75E]' : 'text-gray-300'}`} fill="currentColor" viewBox="0 0 20 20">
+                    <svg key={i} className={`w-4 h-4 ${i < t.rating ? 'text-[#C6A75E]' : 'text-gray-200'}`} fill="currentColor" viewBox="0 0 20 20">
                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                     </svg>
                   ))}
                 </div>
                 <p className="text-gray-600 text-sm leading-relaxed mb-4 line-clamp-3">"{t.text}"</p>
                 <div className="text-xs text-[#C6A75E] font-medium mb-3">Purchased: {t.product}</div>
-                <div className="flex items-center gap-3 pt-3 border-t border-gray-200">
-                  <div className="w-9 h-9 rounded-full bg-[#C6A75E] flex items-center justify-center text-white text-xs font-bold">{t.avatar}</div>
+                <div className="flex items-center gap-3 pt-3 border-t border-[#EDE4D6]">
+                  <div className="w-9 h-9 rounded-full bg-[#4A2F24] flex items-center justify-center text-white text-xs font-bold">{t.avatar}</div>
                   <div>
                     <p className="font-semibold text-gray-800 text-sm">{t.name}</p>
                     <p className="text-xs text-gray-400">{t.location}</p>
@@ -484,16 +484,16 @@ const Homepage = () => {
       </section>
 
       {/* ═══ SECTION 11: NEWSLETTER ═══ */}
-      <section className="py-10 md:py-16 bg-gradient-to-r from-[#C6A75E] to-[#D4BC7E]">
+      <section className="py-10 md:py-16 bg-[#4A2F24]">
         <div className="container mx-auto px-4">
-          <div className="max-w-2xl mx-auto text-center text-white">
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2 sm:mb-3">Get Exclusive Offers & Updates</h2>
-            <p className="text-white/80 text-xs sm:text-sm mb-4 sm:mb-6">Subscribe for 10% off your first order, new arrivals, and special deals</p>
+          <div className="max-w-2xl mx-auto text-center">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2 sm:mb-3">Get Exclusive Offers & Updates</h2>
+            <p className="text-white/60 text-xs sm:text-sm mb-4 sm:mb-6">Subscribe for 10% off your first order, new arrivals, and special deals</p>
             <form className="flex flex-col sm:flex-row gap-2 sm:gap-3 max-w-lg mx-auto" onSubmit={(e) => e.preventDefault()}>
-              <input type="email" placeholder="Enter your email address" className="flex-1 px-4 py-2.5 sm:py-3 rounded-lg text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-white/50 placeholder:text-gray-400" required />
-              <button type="submit" className="bg-[#4A2F24] text-white px-6 py-2.5 sm:py-3 rounded-lg font-semibold text-sm hover:bg-[#3A2119] transition-colors whitespace-nowrap">Subscribe</button>
+              <input type="email" placeholder="Enter your email address" className="flex-1 px-4 py-2.5 sm:py-3 rounded-lg bg-white/10 border border-white/20 text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#C6A75E] placeholder:text-white/40" required />
+              <button type="submit" className="bg-[#C6A75E] text-white px-6 py-2.5 sm:py-3 rounded-lg font-semibold text-sm hover:bg-[#B0914A] transition-colors whitespace-nowrap">Subscribe</button>
             </form>
-            <p className="text-white/50 text-[10px] sm:text-xs mt-3">No spam, unsubscribe anytime. We respect your privacy.</p>
+            <p className="text-white/40 text-[10px] sm:text-xs mt-3">No spam, unsubscribe anytime. We respect your privacy.</p>
           </div>
         </div>
       </section>
