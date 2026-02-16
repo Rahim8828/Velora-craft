@@ -1,7 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Sparkles, Wrench } from 'lucide-react';
-import AnnouncementBar from './AnnouncementBar';
 import SearchBarEnhanced from './SearchBarEnhanced';
 import MegaMenu from './MegaMenu';
 import MobileDrawer from './MobileDrawer';
@@ -52,9 +51,6 @@ const Navigation = ({
 
   return (
     <header className="sticky top-0 z-50">
-      {/* Tier 1: Announcement Bar */}
-      <AnnouncementBar />
-
       {/* Tier 2: Main Header */}
       <div
         className={`bg-white transition-shadow duration-300 ${
