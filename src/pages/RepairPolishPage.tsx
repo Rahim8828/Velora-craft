@@ -510,9 +510,9 @@ export default function RepairPolishPage() {
             <Phone className="w-4 h-4 mr-2" />
             <span>+91 98765 43210</span>
           </a>
-          <a href="mailto:service@veloracraft.com" className="flex items-center hover:text-[#C6A75E]">
+          <a href="mailto:service@veloracraft.in" className="flex items-center hover:text-[#C6A75E]">
             <Mail className="w-4 h-4 mr-2" />
-            <span>service@veloracraft.com</span>
+            <span>service@veloracraft.in</span>
           </a>
           <a
             href="https://wa.me/919876543210?text=I need furniture repair/polish service"

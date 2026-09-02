@@ -24,7 +24,7 @@ describe('Footer Component', () => {
 
   it('displays email address', () => {
     renderFooter();
-    expect(screen.getByText('info@veloracraft.com')).toBeInTheDocument();
+    expect(screen.getByText('info@veloracraft.in')).toBeInTheDocument();
   });
 
   it('displays physical address', () => {

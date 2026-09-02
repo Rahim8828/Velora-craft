@@ -43,7 +43,7 @@ export interface Sitemap {
 export class SEOService {
   private baseUrl: string;
 
-  constructor(baseUrl: string = 'https://veloracraft.com') {
+  constructor(baseUrl: string = 'https://veloracraft.in') {
     this.baseUrl = baseUrl;
   }
 

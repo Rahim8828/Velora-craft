@@ -6,7 +6,7 @@ describe('SEOService', () => {
   let seoService: SEOService;
 
   beforeEach(() => {
-    seoService = new SEOService('https://veloracraft.com');
+    seoService = new SEOService('https://veloracraft.in');
   });
 
   describe('generateProductSchema', () => {
@@ -144,7 +144,7 @@ describe('SEOService', () => {
       expect(meta.title).toContain('Velora Craft');
       expect(meta.description).toBeTruthy();
       expect(meta.keywords.length).toBeGreaterThan(0);
-      expect(meta.canonicalUrl).toBe('https://veloracraft.com');
+      expect(meta.canonicalUrl).toBe('https://veloracraft.in');
     });
 
     it('should generate meta tags for product page', () => {
@@ -175,7 +175,7 @@ describe('SEOService', () => {
 
       expect(meta.title).toContain('Luxury Sofa');
       expect(meta.title).toContain('₹50,000');
-      expect(meta.canonicalUrl).toBe('https://veloracraft.com/products/luxury-sofa');
+      expect(meta.canonicalUrl).toBe('https://veloracraft.in/products/luxury-sofa');
       expect(meta.ogImage).toBe('sofa.jpg');
     });
 
@@ -192,21 +192,21 @@ describe('SEOService', () => {
 
       expect(meta.title).toContain('Sofa Sets');
       expect(meta.description).toContain('sofa sets');
-      expect(meta.canonicalUrl).toBe('https://veloracraft.com/category/sofa-sets');
+      expect(meta.canonicalUrl).toBe('https://veloracraft.in/category/sofa-sets');
     });
 
     it('should generate meta tags for about page', () => {
       const meta = seoService.generatePageMeta('ABOUT');
 
       expect(meta.title).toContain('About Us');
-      expect(meta.canonicalUrl).toBe('https://veloracraft.com/about');
+      expect(meta.canonicalUrl).toBe('https://veloracraft.in/about');
     });
 
     it('should generate meta tags for contact page', () => {
       const meta = seoService.generatePageMeta('CONTACT');
 
       expect(meta.title).toContain('Contact');
-      expect(meta.canonicalUrl).toBe('https://veloracraft.com/contact');
+      expect(meta.canonicalUrl).toBe('https://veloracraft.in/contact');
     });
 
     it('should generate meta tags for search page', () => {
@@ -222,7 +222,7 @@ describe('SEOService', () => {
       const sitemap = seoService.generateSitemap();
 
       expect(sitemap.entries.length).toBeGreaterThan(0);
-      const homepage = sitemap.entries.find(e => e.url === 'https://veloracraft.com');
+      const homepage = sitemap.entries.find(e => e.url === 'https://veloracraft.in');
       expect(homepage).toBeDefined();
       expect(homepage?.priority).toBe(1.0);
     });

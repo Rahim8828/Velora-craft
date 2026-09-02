@@ -87,12 +87,12 @@ const ContactPage: React.FC = () => {
               </div>
               <div>
                 <h3 className="font-semibold text-gray-900 mb-1">Email</h3>
-                <a href="mailto:info@veloracraft.com" className="text-[#C6A75E] hover:underline">
-                  info@veloracraft.com
+                <a href="mailto:info@veloracraft.in" className="text-[#C6A75E] hover:underline">
+                  info@veloracraft.in
                 </a>
                 <br />
-                <a href="mailto:sales@veloracraft.com" className="text-[#C6A75E] hover:underline">
-                  sales@veloracraft.com
+                <a href="mailto:sales@veloracraft.in" className="text-[#C6A75E] hover:underline">
+                  sales@veloracraft.in
                 </a>
               </div>
             </div>

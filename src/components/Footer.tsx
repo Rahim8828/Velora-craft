@@ -138,10 +138,10 @@ const Footer = () => {
                   />
                 </svg>
                 <a
-                  href="mailto:info@veloracraft.com"
+                  href="mailto:info@veloracraft.in"
                   className="hover:text-[#C6A75E] transition-colors"
                 >
-                  info@veloracraft.com
+                  info@veloracraft.in
                 </a>
               </p>
             </div>
