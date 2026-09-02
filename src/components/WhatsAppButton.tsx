@@ -1,6 +1,6 @@
 const WhatsAppButton = () => {
   const handleWhatsAppClick = () => {
-    const phoneNumber = '919876543210'; // Replace with actual WhatsApp business number
+    const phoneNumber = '919236312375'; // Velora Craft WhatsApp business number
     const message = encodeURIComponent('Hello! I would like to inquire about your furniture.');
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
   };

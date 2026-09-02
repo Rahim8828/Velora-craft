@@ -508,15 +508,15 @@ export default function PolishPage() {
         <h3 className="text-xl font-bold text-gray-900 mb-4">Need Immediate Assistance?</h3>
         <p className="text-gray-600 mb-6">Our team is available to answer all your questions</p>
         <div className="flex flex-wrap justify-center gap-6">
-          <a href="tel:+919876543210" className="flex items-center gap-2 bg-white px-5 py-2.5 rounded-lg hover:bg-[#C6A75E] hover:text-white transition-colors">
+          <a href="tel:+919236312375" className="flex items-center gap-2 bg-white px-5 py-2.5 rounded-lg hover:bg-[#C6A75E] hover:text-white transition-colors">
             <Phone className="w-5 h-5" />
-            <span>+91 98765 43210</span>
+            <span>+91 92363 12375</span>
           </a>
           <a href="mailto:polish@veloracraft.in" className="flex items-center gap-2 bg-white px-5 py-2.5 rounded-lg hover:bg-[#C6A75E] hover:text-white transition-colors">
             <Mail className="w-5 h-5" />
             <span>polish@veloracraft.in</span>
           </a>
-          <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer"
+          <a href="https://wa.me/919236312375" target="_blank" rel="noopener noreferrer"
             className="flex items-center gap-2 bg-white px-5 py-2.5 rounded-lg hover:bg-[#25D366] hover:text-white transition-colors">
             <MessageCircle className="w-5 h-5" />
             <span>WhatsApp</span>

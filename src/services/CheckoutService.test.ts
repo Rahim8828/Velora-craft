@@ -37,7 +37,7 @@ describe('CheckoutService', () => {
     city: 'Mumbai',
     state: 'Maharashtra',
     pincode: '400001',
-    phone: '+91 9876543210',
+    phone: '+91 9236312375',
   };
 
   beforeEach(() => {
@@ -170,7 +170,7 @@ describe('CheckoutService', () => {
         deliveryAddress: validAddress,
         contactInfo: {
           email: 'test@example.com',
-          phone: '+91 9876543210',
+          phone: '+91 9236312375',
         },
         paymentMethod: 'COD',
         isGuestCheckout: true,
@@ -203,7 +203,7 @@ describe('CheckoutService', () => {
         deliveryAddress: validAddress,
         contactInfo: {
           email: 'user@example.com',
-          phone: '+91 9876543210',
+          phone: '+91 9236312375',
         },
         paymentMethod: 'ONLINE',
         isGuestCheckout: false,
@@ -222,7 +222,7 @@ describe('CheckoutService', () => {
         deliveryAddress: delhiAddress,
         contactInfo: {
           email: 'test@example.com',
-          phone: '+91 9876543210',
+          phone: '+91 9236312375',
         },
         paymentMethod: 'COD',
         isGuestCheckout: true,
@@ -241,7 +241,7 @@ describe('CheckoutService', () => {
         deliveryAddress: invalidAddress,
         contactInfo: {
           email: 'test@example.com',
-          phone: '+91 9876543210',
+          phone: '+91 9236312375',
         },
         paymentMethod: 'COD',
         isGuestCheckout: true,
@@ -258,7 +258,7 @@ describe('CheckoutService', () => {
         deliveryAddress: validAddress,
         contactInfo: {
           email: 'test@example.com',
-          phone: '+91 9876543210',
+          phone: '+91 9236312375',
         },
         paymentMethod: 'COD',
         isGuestCheckout: true,
@@ -275,7 +275,7 @@ describe('CheckoutService', () => {
         deliveryAddress: validAddress,
         contactInfo: {
           email: 'invalid-email',
-          phone: '+91 9876543210',
+          phone: '+91 9236312375',
         },
         paymentMethod: 'COD',
         isGuestCheckout: true,
@@ -292,7 +292,7 @@ describe('CheckoutService', () => {
         deliveryAddress: validAddress,
         contactInfo: {
           email: 'test@example.com',
-          phone: '+91 9876543210',
+          phone: '+91 9236312375',
         },
         paymentMethod: 'COD',
         isGuestCheckout: true,
@@ -328,7 +328,7 @@ describe('CheckoutService', () => {
         deliveryAddress: validAddress,
         contactInfo: {
           email: 'user@example.com',
-          phone: '+91 9876543210',
+          phone: '+91 9236312375',
         },
         paymentMethod: 'COD',
         isGuestCheckout: false,
@@ -354,7 +354,7 @@ describe('CheckoutService', () => {
         deliveryAddress: validAddress,
         contactInfo: {
           email: 'test@example.com',
-          phone: '+91 9876543210',
+          phone: '+91 9236312375',
         },
         paymentMethod: 'COD',
         isGuestCheckout: true,
@@ -377,7 +377,7 @@ describe('CheckoutService', () => {
         deliveryAddress: validAddress,
         contactInfo: {
           email: 'test@example.com',
-          phone: '+91 9876543210',
+          phone: '+91 9236312375',
         },
         paymentMethod: 'COD',
         isGuestCheckout: true,
@@ -399,7 +399,7 @@ describe('CheckoutService', () => {
         deliveryAddress: validAddress,
         contactInfo: {
           email: 'test@example.com',
-          phone: '+91 9876543210',
+          phone: '+91 9236312375',
         },
         paymentMethod: 'COD',
         isGuestCheckout: true,
@@ -418,7 +418,7 @@ describe('CheckoutService', () => {
         deliveryAddress: validAddress,
         contactInfo: {
           email: 'test@example.com',
-          phone: '+91 9876543210',
+          phone: '+91 9236312375',
         },
         paymentMethod: 'COD',
         isGuestCheckout: true,

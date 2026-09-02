@@ -329,16 +329,16 @@ export default function CustomFurniturePage() {
           Have Questions? Contact Us Directly
         </h3>
         <div className="flex flex-wrap justify-center gap-6 text-gray-700">
-          <a href="tel:+919876543210" className="flex items-center hover:text-[#C6A75E]">
+          <a href="tel:+919236312375" className="flex items-center hover:text-[#C6A75E]">
             <Phone className="w-4 h-4 mr-2" />
-            <span>+91 98765 43210</span>
+            <span>+91 92363 12375</span>
           </a>
           <a href="mailto:custom@veloracraft.in" className="flex items-center hover:text-[#C6A75E]">
             <Mail className="w-4 h-4 mr-2" />
             <span>custom@veloracraft.in</span>
           </a>
           <a
-            href="https://wa.me/919876543210?text=I'm interested in custom furniture"
+            href="https://wa.me/919236312375?text=I'm interested in custom furniture"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center hover:text-[#C6A75E]"

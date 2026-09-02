@@ -14,12 +14,12 @@ describe('Footer Component', () => {
 
   it('renders company name', () => {
     renderFooter();
-    expect(screen.getByText('Velora Craft')).toBeInTheDocument();
+    expect(screen.getByAltText('Velora Craft')).toBeInTheDocument();
   });
 
   it('displays phone number', () => {
     renderFooter();
-    expect(screen.getByText('+91 98765 43210')).toBeInTheDocument();
+    expect(screen.getByText('+91 92363 12375')).toBeInTheDocument();
   });
 
   it('displays email address', () => {
@@ -30,7 +30,7 @@ describe('Footer Component', () => {
   it('displays physical address', () => {
     renderFooter();
     expect(
-      screen.getByText(/123 Furniture Street, Andheri West, Mumbai/)
+      screen.getByText(/Laxmi Nagar, Gala No. 15/)
     ).toBeInTheDocument();
   });
 

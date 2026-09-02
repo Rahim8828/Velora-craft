@@ -125,7 +125,7 @@ Currently, the app uses mock data and doesn't require environment variables.
 Create `.env` file:
 ```env
 VITE_API_URL=https://your-api.com
-VITE_WHATSAPP_NUMBER=+919876543210
+VITE_WHATSAPP_NUMBER=+919236312375
 VITE_ANALYTICS_ID=your-analytics-id
 ```
 

@@ -70,8 +70,8 @@ const ContactPage: React.FC = () => {
               </div>
               <div>
                 <h3 className="font-semibold text-gray-900 mb-1">Phone</h3>
-                <a href="tel:+919876543210" className="text-[#C6A75E] hover:underline">
-                  +91 98765 43210
+                <a href="tel:+919236312375" className="text-[#C6A75E] hover:underline">
+                  +91 92363 12375
                 </a>
                 <br />
                 <a href="tel:+912212345678" className="text-[#C6A75E] hover:underline">
@@ -122,7 +122,7 @@ const ContactPage: React.FC = () => {
               <div>
                 <h3 className="font-semibold text-gray-900 mb-1">WhatsApp</h3>
                 <a
-                  href="https://wa.me/919876543210?text=Hello%20A1%20Furniture%20Studio"
+                  href="https://wa.me/919236312375?text=Hello%20Velora%20Craft"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[#C6A75E] hover:underline"
@@ -208,7 +208,7 @@ const ContactPage: React.FC = () => {
                   value={formData.phone}
                   onChange={handleChange}
                   className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#C6A75E]/30 focus:border-[#C6A75E] transition-colors"
-                  placeholder="+91 98765 43210"
+                  placeholder="+91 92363 12375"
                 />
               </div>
 
@@ -291,13 +291,13 @@ const ContactPage: React.FC = () => {
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
-            href="tel:+919876543210"
-            className="bg-[#4A2F24] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#3A2119] transition-colors"
+            href="tel:+919236312375"
+            className="flex items-center justify-center gap-2 bg-[#C6A75E] text-white py-3 px-6 rounded-lg font-semibold hover:bg-[#B0914A] transition-colors"
           >
-            <Phone className="w-4 h-4 inline mr-1" /> Call Now
+            <span>Call Us Now</span>
           </a>
           <a
-            href="https://wa.me/919876543210?text=Hello%20A1%20Furniture%20Studio"
+            href="https://wa.me/919236312375?text=Hello%20Velora%20Craft"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors"

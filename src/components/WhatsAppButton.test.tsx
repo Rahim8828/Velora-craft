@@ -28,7 +28,7 @@ describe('WhatsAppButton', () => {
     await user.click(button);
     
     expect(windowOpenSpy).toHaveBeenCalledWith(
-      expect.stringContaining('https://wa.me/919876543210'),
+      expect.stringContaining('https://wa.me/919236312375'),
       '_blank'
     );
     expect(windowOpenSpy).toHaveBeenCalledWith(

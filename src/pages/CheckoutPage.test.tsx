@@ -231,11 +231,11 @@ describe('CheckoutPage', () => {
         city: 'Mumbai',
         state: 'Maharashtra',
         pincode: '400001',
-        phone: '9876543210',
+        phone: '9236312375',
       },
       contactInfo: {
         email: 'john@example.com',
-        phone: '9876543210',
+        phone: '9236312375',
       },
       orderDate: new Date(),
       estimatedDelivery: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
@@ -251,9 +251,9 @@ describe('CheckoutPage', () => {
     fireEvent.change(screen.getByLabelText(/City/), { target: { value: 'Mumbai' } });
     fireEvent.change(screen.getByLabelText(/State/), { target: { value: 'Maharashtra' } });
     fireEvent.change(screen.getByLabelText(/Pincode/), { target: { value: '400001' } });
-    fireEvent.change(screen.getByLabelText(/Phone Number/), { target: { value: '9876543210' } });
+    fireEvent.change(screen.getByLabelText(/Phone Number/), { target: { value: '9236312375' } });
     fireEvent.change(screen.getByLabelText(/Email Address/), { target: { value: 'john@example.com' } });
-    fireEvent.change(screen.getByLabelText(/Contact Phone/), { target: { value: '9876543210' } });
+    fireEvent.change(screen.getByLabelText(/Contact Phone/), { target: { value: '9236312375' } });
 
     // Navigate to step 3 and place order
     goToStep3();
@@ -300,7 +300,7 @@ describe('CheckoutPage', () => {
       email: 'user@example.com',
       passwordHash: 'hash',
       name: 'Test User',
-      phone: '9876543210',
+      phone: '9236312375',
       addresses: [],
       wishlist: [],
       orders: [],
@@ -348,11 +348,11 @@ describe('CheckoutPage', () => {
         city: 'Mumbai',
         state: 'Maharashtra',
         pincode: '400001',
-        phone: '9876543210',
+        phone: '9236312375',
       },
       contactInfo: {
         email: 'john@example.com',
-        phone: '9876543210',
+        phone: '9236312375',
       },
       orderDate: new Date(),
     };
@@ -367,9 +367,9 @@ describe('CheckoutPage', () => {
     fireEvent.change(screen.getByLabelText(/City/), { target: { value: 'Mumbai' } });
     fireEvent.change(screen.getByLabelText(/State/), { target: { value: 'Maharashtra' } });
     fireEvent.change(screen.getByLabelText(/Pincode/), { target: { value: '400001' } });
-    fireEvent.change(screen.getByLabelText(/Phone Number/), { target: { value: '9876543210' } });
+    fireEvent.change(screen.getByLabelText(/Phone Number/), { target: { value: '9236312375' } });
     fireEvent.change(screen.getByLabelText(/Email Address/), { target: { value: 'john@example.com' } });
-    fireEvent.change(screen.getByLabelText(/Contact Phone/), { target: { value: '9876543210' } });
+    fireEvent.change(screen.getByLabelText(/Contact Phone/), { target: { value: '9236312375' } });
 
     // Navigate to step 3 and place order
     goToStep3();
@@ -458,11 +458,11 @@ describe('CheckoutPage', () => {
           city: 'Mumbai',
           state: 'Maharashtra',
           pincode: '400002',
-          phone: '9876543211',
+          phone: '9236312375',
         },
         contactInfo: {
           email: 'jane@example.com',
-          phone: '9876543211',
+          phone: '9236312375',
         },
         orderDate: new Date(),
       };
@@ -477,9 +477,9 @@ describe('CheckoutPage', () => {
       fireEvent.change(screen.getByLabelText(/City/), { target: { value: 'Mumbai' } });
       fireEvent.change(screen.getByLabelText(/State/), { target: { value: 'Maharashtra' } });
       fireEvent.change(screen.getByLabelText(/Pincode/), { target: { value: '400002' } });
-      fireEvent.change(screen.getByLabelText(/Phone Number/), { target: { value: '9876543211' } });
+      fireEvent.change(screen.getByLabelText(/Phone Number/), { target: { value: '9236312375' } });
       fireEvent.change(screen.getByLabelText(/Email Address/), { target: { value: 'jane@example.com' } });
-      fireEvent.change(screen.getByLabelText(/Contact Phone/), { target: { value: '9876543211' } });
+      fireEvent.change(screen.getByLabelText(/Contact Phone/), { target: { value: '9236312375' } });
 
       // Navigate to step 3 and place order
       goToStep3();
@@ -520,11 +520,11 @@ describe('CheckoutPage', () => {
           city: 'Mumbai',
           state: 'Maharashtra',
           pincode: '400001',
-          phone: '9876543210',
+          phone: '9236312375',
         },
         contactInfo: {
           email: 'john@example.com',
-          phone: '9876543210',
+          phone: '9236312375',
         },
         orderDate: new Date(),
       };
@@ -539,9 +539,9 @@ describe('CheckoutPage', () => {
       fireEvent.change(screen.getByLabelText(/City/), { target: { value: 'Mumbai' } });
       fireEvent.change(screen.getByLabelText(/State/), { target: { value: 'Maharashtra' } });
       fireEvent.change(screen.getByLabelText(/Pincode/), { target: { value: '400001' } });
-      fireEvent.change(screen.getByLabelText(/Phone Number/), { target: { value: '9876543210' } });
+      fireEvent.change(screen.getByLabelText(/Phone Number/), { target: { value: '9236312375' } });
       fireEvent.change(screen.getByLabelText(/Email Address/), { target: { value: 'john@example.com' } });
-      fireEvent.change(screen.getByLabelText(/Contact Phone/), { target: { value: '9876543210' } });
+      fireEvent.change(screen.getByLabelText(/Contact Phone/), { target: { value: '9236312375' } });
 
       // Navigate to step 3 and place order
       goToStep3();

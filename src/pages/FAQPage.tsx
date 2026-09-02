@@ -254,7 +254,7 @@ const FAQPage: React.FC = () => {
                 Contact Us
               </Link>
               <a
-                href="https://wa.me/919876543210?text=Hi%2C%20I%20have%20a%20question"
+                href="https://wa.me/919236312375?text=Hi%2C%20I%20have%20a%20question"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block bg-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors"
