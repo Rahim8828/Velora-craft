@@ -43,6 +43,15 @@ export default {
         'card-hover': '0 8px 30px rgba(0,0,0,0.12)',
         'strong': '0 10px 40px -10px rgba(0,0,0,0.15), 0 20px 25px -5px rgba(0,0,0,0.1)',
       },
+      animation: {
+        'fade-in': 'fadeIn 0.3s ease-in-out forwards',
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+      },
     },
   },
   plugins: [],

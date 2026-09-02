@@ -466,7 +466,7 @@ export default function RepairPolishPage() {
       {/* Why Choose Us */}
       <div className="mt-12 bg-gradient-to-r from-gray-50 to-gray-100 rounded-lg p-8">
         <h2 className="text-2xl font-semibold text-gray-900 mb-6 text-center">
-          Why Choose A1 Furniture Studio?
+          Why Choose Velora Craft?
         </h2>
         <div className="grid md:grid-cols-4 gap-6">
           <div className="text-center">
@@ -510,9 +510,9 @@ export default function RepairPolishPage() {
             <Phone className="w-4 h-4 mr-2" />
             <span>+91 98765 43210</span>
           </a>
-          <a href="mailto:service@a1furniture.com" className="flex items-center hover:text-[#C6A75E]">
+          <a href="mailto:service@veloracraft.com" className="flex items-center hover:text-[#C6A75E]">
             <Mail className="w-4 h-4 mr-2" />
-            <span>service@a1furniture.com</span>
+            <span>service@veloracraft.com</span>
           </a>
           <a
             href="https://wa.me/919876543210?text=I need furniture repair/polish service"

@@ -333,9 +333,9 @@ export default function CustomFurniturePage() {
             <Phone className="w-4 h-4 mr-2" />
             <span>+91 98765 43210</span>
           </a>
-          <a href="mailto:custom@a1furniture.com" className="flex items-center hover:text-[#C6A75E]">
+          <a href="mailto:custom@veloracraft.com" className="flex items-center hover:text-[#C6A75E]">
             <Mail className="w-4 h-4 mr-2" />
-            <span>custom@a1furniture.com</span>
+            <span>custom@veloracraft.com</span>
           </a>
           <a
             href="https://wa.me/919876543210?text=I'm interested in custom furniture"

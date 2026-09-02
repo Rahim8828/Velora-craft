@@ -1,7 +1,7 @@
-// Service Worker for A1 Furniture Studio
+// Service Worker for Velora Craft
 // Provides basic offline support and caching
 
-const CACHE_NAME = 'a1-furniture-v1';
+const CACHE_NAME = 'velora-craft-v1';
 const STATIC_CACHE = [
   '/',
   '/index.html',

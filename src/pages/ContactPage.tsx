@@ -87,12 +87,12 @@ const ContactPage: React.FC = () => {
               </div>
               <div>
                 <h3 className="font-semibold text-gray-900 mb-1">Email</h3>
-                <a href="mailto:info@a1furniture.com" className="text-[#C6A75E] hover:underline">
-                  info@a1furniture.com
+                <a href="mailto:info@veloracraft.com" className="text-[#C6A75E] hover:underline">
+                  info@veloracraft.com
                 </a>
                 <br />
-                <a href="mailto:sales@a1furniture.com" className="text-[#C6A75E] hover:underline">
-                  sales@a1furniture.com
+                <a href="mailto:sales@veloracraft.com" className="text-[#C6A75E] hover:underline">
+                  sales@veloracraft.com
                 </a>
               </div>
             </div>
@@ -105,9 +105,10 @@ const ContactPage: React.FC = () => {
               <div>
                 <h3 className="font-semibold text-gray-900 mb-1">Address</h3>
                 <p className="text-gray-700">
-                  A1 Furniture Studio<br />
-                  123 Furniture Lane, Andheri West<br />
-                  Mumbai, Maharashtra 400053<br />
+                  Velora Craft<br />
+                  Laxmi Nagar, Gala No. 15, Laal Mitti<br />
+                  off New Link Road, Goregaon West<br />
+                  Mumbai, Maharashtra 400104<br />
                   India
                 </p>
               </div>
@@ -267,10 +268,10 @@ const ContactPage: React.FC = () => {
           <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#F5EFE6] to-[#EDE4D6]">
             <div className="text-center">
               <Map className="w-16 h-16 text-[#C6A75E] mx-auto mb-4" />
-              <p className="text-gray-700 font-medium">A1 Furniture Studio</p>
-              <p className="text-gray-600">123 Furniture Lane, Andheri West, Mumbai</p>
+              <p className="text-gray-700 font-medium">Velora Craft</p>
+              <p className="text-gray-600">Goregaon West, Mumbai</p>
               <a
-                href="https://maps.google.com/?q=Andheri+West+Mumbai"
+                href="https://maps.google.com/?q=Goregaon+West+Mumbai"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block mt-4 text-[#C6A75E] hover:underline font-medium"

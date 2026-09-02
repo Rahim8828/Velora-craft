@@ -34,7 +34,7 @@ export function usePageMeta(pageType: PageType, data?: any) {
     setMeta('property', 'og:description', meta.description);
     setMeta('property', 'og:url', meta.canonicalUrl);
     setMeta('property', 'og:type', 'website');
-    setMeta('property', 'og:site_name', 'A1 Furniture Studio');
+    setMeta('property', 'og:site_name', 'Velora Craft');
     if (meta.ogImage) {
       setMeta('property', 'og:image', meta.ogImage);
     }
@@ -58,7 +58,7 @@ export function usePageMeta(pageType: PageType, data?: any) {
 
     // Cleanup: reset title on unmount
     return () => {
-      document.title = 'A1 Furniture Studio - Premium Furniture in Mumbai';
+      document.title = 'Velora Craft - Premium Furniture in Mumbai';
     };
   }, [pageType, data]);
 }

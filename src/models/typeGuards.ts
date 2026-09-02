@@ -1,4 +1,4 @@
-// Type Guards and Validation Utilities for A1 Furniture Studio
+// Type Guards and Validation Utilities for Velora Craft
 
 import type {
   Product,

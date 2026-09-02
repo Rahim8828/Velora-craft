@@ -350,7 +350,7 @@ const CheckoutPage = () => {
                 </span>
               </button>
               {index < steps.length - 1 && (
-                <div className={`h-0.5 flex-1 mx-1 -mt-5 ${currentStep > step.num ? 'bg-[#C6A75E]' : 'bg-gray-200'}`} />
+                <div className={`h-0.5 flex-1 mx-1 -mt-5 ${currentStep > step.num ? 'bg-brand-400' : 'bg-gray-200'}`} />
               )}
             </div>
           ))}
@@ -365,7 +365,7 @@ const CheckoutPage = () => {
                 {/* Delivery Address */}
                 <div className="bg-white rounded-xl border border-gray-100 p-6">
                   <h2 className="text-lg font-bold text-gray-900 mb-5 flex items-center gap-2">
-                    <span className="w-7 h-7 bg-[#C6A75E] text-white rounded-full flex items-center justify-center text-xs font-bold">1</span>
+                    <span className="w-7 h-7 bg-brand-400 text-white rounded-full flex items-center justify-center text-xs font-bold">1</span>
                     Delivery Address
                   </h2>
 
@@ -513,7 +513,7 @@ const CheckoutPage = () => {
                   <button
                     onClick={handleSubmitOrder}
                     disabled={submitting}
-                    className="flex-1 bg-[#4A2F24] text-white py-3.5 rounded-lg font-semibold hover:bg-[#3A2119] active:scale-[0.98] transition-all text-sm disabled:bg-gray-300 disabled:cursor-not-allowed"
+                    className="flex-1 bg-brand-700 text-white py-3.5 rounded-lg font-semibold hover:bg-brand-800 active:scale-[0.98] transition-all text-sm disabled:bg-gray-300 disabled:cursor-not-allowed"
                   >
                     {submitting ? (
                       <span className="flex items-center justify-center gap-2">

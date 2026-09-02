@@ -2,13 +2,9 @@ import { useEffect, useState, useCallback } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Truck, Wrench, Shield, RotateCcw, IndianRupee, Sparkles, TreePine, ArrowRight } from 'lucide-react';
 import ProductCard from '../components/ProductCard';
-import LazyImage from '../components/LazyImage';
 
 // ─── Hero Asset Imports ─────────────────────────────────────────────
 import heroImg1 from '../assets/Home 1.webp';
-import heroImg2 from '../assets/Home 2.webp';
-import heroImg3 from '../assets/Home 3.webp';
-import heroImg4 from '../assets/Home 4.webp';
 
 // ─── Category Asset Imports ─────────────────────────────────────────
 import sofaImg from '../assets/Sofa.webp';
@@ -16,7 +12,6 @@ import sofaCumbedImg from '../assets/Sofa Cumbed.webp';
 import reclinerImg from '../assets/Recliner.webp';
 import bedImg from '../assets/Bed.webp';
 import wardrobeImg from '../assets/Wardrobe.webp';
-import diningSetImg from '../assets/Dining Set.webp';
 import tvUnitImg from '../assets/TV Unit.webp';
 import tableImg from '../assets/Table.webp';
 import chairsImg from '../assets/Chairs.webp';
@@ -28,62 +23,6 @@ import { wishlistService } from '../services/WishlistService';
 import { usePageMeta } from '../hooks/usePageMeta';
 import type { Product } from '../models/types';
 
-// ─── Hero Banner Data ───────────────────────────────────────────────
-const heroBanners = [
-  {
-    id: 1,
-    title: 'Crafted for Comfort',
-    subtitle: 'Premium Collection 2025',
-    description: 'Handmade solid-wood furniture with factory-direct pricing. Free delivery across Mumbai.',
-    cta: 'Shop Collection',
-    ctaLink: '/category/sofa-sets',
-    image: heroImg1,
-    bgColor: 'from-black/70 via-black/40 to-transparent',
-    tag: 'Bestsellers',
-  },
-  {
-    id: 2,
-    title: 'Design Your Dream Home',
-    subtitle: 'Custom Furniture Studio',
-    description: 'Get bespoke furniture built to your exact specifications. Free 3D design consultation.',
-    cta: 'Start Customizing',
-    ctaLink: '/custom-furniture',
-    image: heroImg2,
-    bgColor: 'from-black/70 via-black/40 to-transparent',
-    tag: 'New Service',
-  },
-  {
-    id: 3,
-    title: 'Bedroom Makeover Sale',
-    subtitle: 'Up to 40% Off',
-    description: 'Transform your bedroom with our premium bed sets, wardrobes & dressers.',
-    cta: 'Shop Bedroom',
-    ctaLink: '/category/beds',
-    image: heroImg3,
-    bgColor: 'from-black/70 via-black/40 to-transparent',
-    tag: 'Limited Offer',
-  },
-  {
-    id: 4,
-    title: 'Elevate Your Living Space',
-    subtitle: 'Exclusive Designs',
-    description: 'Discover our curated range of modern & classic furniture for every room.',
-    cta: 'Explore Now',
-    ctaLink: '/category/sofa-sets',
-    image: heroImg4,
-    bgColor: 'from-black/70 via-black/40 to-transparent',
-    tag: 'Trending',
-  },
-];
-
-// ─── Shop by Room Data ──────────────────────────────────────────────
-const rooms = [
-  { name: 'Living Room', image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=500&h=660&fit=crop', items: '120+ Products', link: '/category/sofa-sets' },
-  { name: 'Bedroom', image: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=500&h=660&fit=crop', items: '80+ Products', link: '/category/beds' },
-  { name: 'Dining Room', image: 'https://images.unsplash.com/photo-1617806118233-18e1de247200?w=500&h=660&fit=crop', items: '60+ Products', link: '/category/dining-tables' },
-  { name: 'Home Office', image: 'https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?w=500&h=660&fit=crop', items: '45+ Products', link: '/category/office-furniture' },
-];
-
 // ─── Shop by Category Circle Data ───────────────────────────────────
 const shopByCategory = [
   { name: 'New Arrivals', image: '', link: '/category/sofa-sets', isNew: true },
@@ -91,36 +30,17 @@ const shopByCategory = [
   { name: 'Sofa Cum Beds', image: sofaCumbedImg, link: '/category/sofa-sets' },
   { name: 'Recliners', image: reclinerImg, link: '/category/sofa-sets' },
   { name: 'Beds', image: bedImg, link: '/category/beds-mattresses' },
-  { name: 'Wardrobes', image: wardrobeImg, link: '/category/wardrobes-storage' },
-  { name: 'Dining Table Sets', image: diningSetImg, link: '/category/dining-tables' },
+  { name: 'Wardrobes', image: wardrobeImg, link: '/category/beds-mattresses' },
   { name: 'TV Units', image: tvUnitImg, link: '/category/sofa-sets' },
   { name: 'Tables', image: tableImg, link: '/category/sofa-sets' },
   { name: 'Chairs', image: chairsImg, link: '/category/sofa-sets' },
   { name: 'Lounge Chairs', image: loungeChairsImg, link: '/category/sofa-sets' },
 ];
 
-// ─── Budget Range Data ──────────────────────────────────────────────
-const budgetRanges = [
-  { label: 'Under ₹10K', range: 'Budget Friendly', link: '/category/sofa-sets', color: 'from-[#C6A75E] to-[#B0914A]' },
-  { label: '₹10K – ₹25K', range: 'Best Value', link: '/category/sofa-sets', color: 'from-[#B0914A] to-[#8B7340]' },
-  { label: '₹25K – ₹50K', range: 'Premium', link: '/category/sofa-sets', color: 'from-[#6B5530] to-[#4A2F24]' },
-  { label: '₹50K+', range: 'Luxury', link: '/category/sofa-sets', color: 'from-[#4A2F24] to-[#2C1A14]' },
-];
-
-// ─── Testimonial Data ───────────────────────────────────────────────
-const testimonials = [
-  { name: 'Priya Sharma', location: 'Andheri, Mumbai', text: 'The custom sofa we ordered fits perfectly in our living room. Excellent quality and the delivery was on time!', rating: 5, avatar: 'PS', product: 'Custom L-Shape Sofa' },
-  { name: 'Rajesh Patel', location: 'Bandra, Mumbai', text: 'Got my old dining table repaired and polished. It looks brand new! Amazing craftsmanship and attention to detail.', rating: 5, avatar: 'RP', product: 'Table Repair & Polish' },
-  { name: 'Amit Desai', location: 'Powai, Mumbai', text: 'Furnished our entire office with A1 Furniture. Professional service, timely delivery, and great quality.', rating: 4, avatar: 'AD', product: 'Office Furniture Set' },
-  { name: 'Sneha Kapoor', location: 'Juhu, Mumbai', text: 'The Sheesham wood bed set is gorgeous! Solid build quality and the finish is beautiful. Highly recommend!', rating: 5, avatar: 'SK', product: 'Sheesham King Bed' },
-];
-
 const Homepage = () => {
   const navigate = useNavigate();
   const [featuredProducts, setFeaturedProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
-  const [currentBanner, setCurrentBanner] = useState(0);
-  const [bannerPaused, setBannerPaused] = useState(false);
 
   usePageMeta('HOME');
 
@@ -139,15 +59,6 @@ const Homepage = () => {
     loadData();
   }, []);
 
-  // Auto-rotate banners
-  useEffect(() => {
-    if (bannerPaused) return;
-    const timer = setInterval(() => {
-      setCurrentBanner((prev) => (prev + 1) % heroBanners.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, [bannerPaused]);
-
   const handleAddToCart = useCallback((productId: string) => {
     cartService.addItem(productId, 1);
   }, []);
@@ -160,14 +71,10 @@ const Homepage = () => {
     navigate(`/product/${productId}`);
   }, [navigate]);
 
-  const goToBanner = (index: number) => setCurrentBanner(index);
-  const nextBanner = () => setCurrentBanner((prev) => (prev + 1) % heroBanners.length);
-  const prevBanner = () => setCurrentBanner((prev) => (prev - 1 + heroBanners.length) % heroBanners.length);
-
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50">
-        <div className="w-full h-[500px] bg-gray-200 animate-pulse" />
+        <div className="w-full h-[400px] bg-gray-200 animate-pulse" />
         <div className="container mx-auto px-4 py-12">
           <div className="h-8 bg-gray-200 rounded w-64 mx-auto mb-8 animate-pulse" />
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
@@ -189,73 +96,86 @@ const Homepage = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* ═══ SECTION 1: HERO BANNER CAROUSEL ═══ */}
-      <section className="bg-white pt-2 pb-0">
-        <div
-          className="relative w-full max-w-[1320px] mx-auto px-3 sm:px-6 lg:px-8"
-          onMouseEnter={() => setBannerPaused(true)}
-          onMouseLeave={() => setBannerPaused(false)}
-        >
-          <div className="relative w-full h-[45vh] sm:h-[50vh] md:h-[60vh] lg:h-[70vh] min-h-[250px] max-h-[650px] rounded-2xl sm:rounded-[20px] overflow-hidden">
-            {heroBanners.map((banner, index) => (
-              <div
-                key={banner.id}
-                className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
-                  index === currentBanner ? 'opacity-100 z-10' : 'opacity-0 z-0'
-                }`}
-              >
-                <img src={banner.image} alt={banner.title} className="w-full h-full object-cover object-center" />
-                <div className={`absolute inset-0 bg-gradient-to-r ${banner.bgColor}`} />
-                <div className="absolute inset-0 flex items-end sm:items-center z-20 pb-12 sm:pb-0">
-                  <div className="px-4 sm:px-10 md:px-14 lg:px-16">
-                    <div className="max-w-xl">
-                      {banner.tag && (
-                        <span className="inline-block bg-[#C6A75E] text-white text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-0.5 sm:py-1 rounded mb-2 sm:mb-4 uppercase tracking-wider">
-                          {banner.tag}
-                        </span>
-                      )}
-                      <p className="text-white/70 text-[10px] sm:text-sm font-medium tracking-widest uppercase mb-1 sm:mb-2">
-                        {banner.subtitle}
-                      </p>
-                      <h1 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-1 sm:mb-4 leading-tight">
-                        {banner.title}
-                      </h1>
-                      <p className="text-white/80 text-xs sm:text-sm mb-3 sm:mb-6 max-w-md leading-relaxed hidden xs:block">
-                        {banner.description}
-                      </p>
-                      <Link
-                        to={banner.ctaLink}
-                        className="inline-flex items-center gap-1.5 sm:gap-2 bg-white text-gray-900 px-4 sm:px-6 md:px-8 py-2 sm:py-3 rounded-lg font-semibold text-xs sm:text-sm hover:bg-[#C6A75E] hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl group"
-                      >
-                        {banner.cta}
-                        <svg className="w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
-                      </Link>
-                    </div>
-                  </div>
+      {/* ═══ SECTION 1: HERO SECTION - Split Layout ═══ */}
+      <section className="bg-white pt-4 pb-8">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            {/* Left: Text Content */}
+            <div className="order-2 lg:order-1">
+              <div className="inline-flex items-center gap-2 bg-[#FFF5EE] text-[#C6A75E] px-4 py-2 rounded-full text-sm font-semibold mb-6">
+                <Sparkles className="w-4 h-4" />
+                Premium Furniture Studio
+              </div>
+              
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-4">
+                Crafted for <span className="text-[#C6A75E]">Comfort</span>
+                <br />& Lasting Beauty
+              </h1>
+              
+              <p className="text-gray-600 text-lg mb-6 max-w-xl">
+                Handmade solid-wood furniture with factory-direct pricing. 
+                Free delivery across Mumbai. 5-year warranty on all products.
+              </p>
+
+              <div className="flex flex-wrap gap-4 mb-8">
+                <Link 
+                  to="/category/sofa-sets"
+                  className="inline-flex items-center gap-2 bg-[#C6A75E] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#B0914A] transition-colors shadow-lg shadow-[#C6A75E]/20"
+                >
+                  Shop Sofas
+                  <ArrowRight className="w-5 h-5" />
+                </Link>
+                <Link 
+                  to="/category/beds-mattresses"
+                  className="inline-flex items-center gap-2 bg-white text-gray-900 px-6 py-3 rounded-lg font-semibold border border-gray-200 hover:border-[#C6A75E] hover:text-[#C6A75E] transition-colors"
+                >
+                  Shop Beds
+                </Link>
+              </div>
+
+              {/* Stats */}
+              <div className="flex flex-wrap gap-6 pt-6 border-t border-gray-100">
+                <div>
+                  <p className="text-2xl font-bold text-gray-900">5,000+</p>
+                  <p className="text-sm text-gray-500">Happy Customers</p>
+                </div>
+                <div>
+                  <p className="text-2xl font-bold text-gray-900">10+</p>
+                  <p className="text-sm text-gray-500">Years Experience</p>
+                </div>
+                <div>
+                  <p className="text-2xl font-bold text-gray-900">500+</p>
+                  <p className="text-sm text-gray-500">Products</p>
                 </div>
               </div>
-            ))}
-            <button onClick={prevBanner} className="absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 z-30 bg-white/30 hover:bg-white/50 backdrop-blur-sm text-white w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all" aria-label="Previous banner">
-              <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
-            </button>
-            <button onClick={nextBanner} className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 z-30 bg-white/30 hover:bg-white/50 backdrop-blur-sm text-white w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all" aria-label="Next banner">
-              <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
-            </button>
-            <div className="absolute bottom-3 sm:bottom-4 left-1/2 -translate-x-1/2 z-30 flex gap-1.5 sm:gap-2">
-              {heroBanners.map((_, index) => (
-                <button key={index} onClick={() => goToBanner(index)} className={`h-1.5 sm:h-2 rounded-full transition-all duration-300 ${index === currentBanner ? 'bg-white w-6 sm:w-8' : 'bg-white/40 w-1.5 sm:w-2 hover:bg-white/60'}`} aria-label={`Go to slide ${index + 1}`} />
-              ))}
+            </div>
+
+            {/* Right: Hero Image */}
+            <div className="order-1 lg:order-2 relative">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                <img 
+                  src={heroImg1} 
+                  alt="Premium Furniture" 
+                  className="w-full h-[300px] sm:h-[400px] lg:h-[500px] object-cover"
+                />
+                {/* Overlay badge */}
+                <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg shadow-lg">
+                  <p className="text-sm font-semibold text-gray-900">Premium Sheesham Wood</p>
+                  <p className="text-xs text-gray-500">Factory Direct Pricing</p>
+                </div>
+              </div>
+              {/* Decorative elements */}
+              <div className="absolute -top-4 -right-4 w-24 h-24 bg-[#C6A75E]/10 rounded-full" />
+              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-[#C6A75E]/10 rounded-full" />
             </div>
           </div>
         </div>
       </section>
 
       {/* ═══ SECTION 2: TRUST/SERVICE STRIP ═══ */}
-      <section className="bg-[#F5EFE6] border-y border-[#E5DCD0]">
+      <section className="bg-[#FFF5EE] border-y border-[#FFE0CC]">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-[#E5DCD0]/60">
+          <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-[#FFE0CC]">
             {[
               { icon: <Truck className="w-6 h-6 text-[#C6A75E]" />, title: 'Free Delivery', desc: 'Across Mumbai' },
               { icon: <Wrench className="w-6 h-6 text-[#C6A75E]" />, title: 'Expert Assembly', desc: 'Free Installation' },
@@ -278,18 +198,18 @@ const Homepage = () => {
       <section className="py-8 sm:py-12 md:py-16 bg-white">
         <div className="max-w-[1400px] mx-auto px-3 sm:px-6 lg:px-8">
           <SectionHeader title="Shop by Category" subtitle="Explore our curated furniture collections" />
-          {/* Row 1: First 6 items */}
+          {/* Category Grid - All items with consistent layout */}
           <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-y-6 sm:gap-y-8 gap-x-1 sm:gap-x-4">
-            {shopByCategory.slice(0, 6).map((cat) => (
+            {shopByCategory.map((cat) => (
               <Link
                 key={cat.name}
                 to={cat.link}
                 className="group flex flex-col items-center gap-2 sm:gap-3"
               >
-                <div className="w-[85px] h-[85px] sm:w-[120px] sm:h-[120px] md:w-[140px] md:h-[140px] lg:w-[170px] lg:h-[170px] rounded-full bg-[#F5EFE6] border border-[#E5DCD0] overflow-hidden flex items-center justify-center shadow-sm group-hover:shadow-lg group-hover:scale-105 transition-all duration-300">
+                <div className="w-[85px] h-[85px] sm:w-[120px] sm:h-[120px] md:w-[140px] md:h-[140px] lg:w-[170px] lg:h-[170px] rounded-full bg-[#FFF5EE] overflow-hidden flex items-center justify-center group-hover:shadow-lg group-hover:scale-105 transition-all duration-300">
                   {cat.isNew ? (
-                    <div className="w-full h-full bg-gradient-to-br from-[#4A2F24] to-[#3A2119] flex items-center justify-center">
-                      <Sparkles className="w-10 h-10 sm:w-12 sm:h-12 text-white" />
+                    <div className="w-full h-full bg-gradient-to-br from-[#C6A75E] to-[#D45A1E] flex items-center justify-center">
+                      <Sparkles className="w-10 h-10 sm:w-12 sm:h-12 text-[#C6A75E]" />
                     </div>
                   ) : (
                     <img
@@ -305,67 +225,10 @@ const Homepage = () => {
               </Link>
             ))}
           </div>
-          {/* Row 2: Remaining 5 items, centered */}
-          <div className="grid grid-cols-3 sm:grid-cols-5 gap-y-6 sm:gap-y-8 gap-x-1 sm:gap-x-4 mt-6 sm:mt-8 max-w-[1000px] mx-auto">
-            {shopByCategory.slice(6).map((cat) => (
-              <Link
-                key={cat.name}
-                to={cat.link}
-                className="group flex flex-col items-center gap-2 sm:gap-3"
-              >
-                <div className="w-[85px] h-[85px] sm:w-[120px] sm:h-[120px] md:w-[140px] md:h-[140px] lg:w-[170px] lg:h-[170px] rounded-full bg-[#F5EFE6] border border-[#E5DCD0] overflow-hidden flex items-center justify-center shadow-sm group-hover:shadow-lg group-hover:scale-105 transition-all duration-300">
-                  <img
-                    src={cat.image}
-                    alt={cat.name}
-                    className="w-[80%] h-[80%] object-contain"
-                  />
-                </div>
-                <span className="text-xs sm:text-sm font-medium text-gray-800 text-center leading-tight group-hover:text-[#C6A75E] transition-colors">
-                  {cat.name}
-                </span>
-              </Link>
-            ))}
-          </div>
         </div>
       </section>
 
-      {/* ═══ SECTION 4: PROMOTIONAL DEAL BANNERS ═══ */}
-      <section className="py-4 sm:py-6 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-            <Link to="/custom-furniture" className="group relative overflow-hidden rounded-xl h-40 sm:h-48 md:h-56 block">
-              <img src="https://images.unsplash.com/photo-1538688525198-9b88f6f53126?w=700&h=350&fit=crop" alt="Custom Furniture" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#4A2F24]/90 to-transparent" />
-              <div className="absolute inset-0 flex items-center p-6 md:p-8">
-                <div>
-                  <span className="text-[#C6A75E] text-xs font-bold uppercase tracking-widest drop-shadow-sm">Bespoke</span>
-                  <h3 className="text-white text-2xl md:text-3xl font-bold mt-1 mb-2">Custom Furniture</h3>
-                  <p className="text-white/70 text-sm mb-4 max-w-xs">Design your dream piece. Free consultation & 3D preview.</p>
-                  <span className="inline-flex items-center gap-1 text-white text-sm font-semibold group-hover:gap-2 transition-all">
-                    Get Started <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
-                  </span>
-                </div>
-              </div>
-            </Link>
-            <Link to="/repair-polish" className="group relative overflow-hidden rounded-xl h-40 sm:h-48 md:h-56 block">
-              <img src="https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?w=700&h=350&fit=crop" alt="Repair & Polish" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#4A2F24]/90 to-transparent" />
-              <div className="absolute inset-0 flex items-center p-6 md:p-8">
-                <div>
-                  <span className="text-[#C6A75E] text-xs font-bold uppercase tracking-widest drop-shadow-sm">Services</span>
-                  <h3 className="text-white text-2xl md:text-3xl font-bold mt-1 mb-2">Repair & Polish</h3>
-                  <p className="text-white/70 text-sm mb-4 max-w-xs">Restore your beloved furniture. Starting at ₹2,999.</p>
-                  <span className="inline-flex items-center gap-1 text-white text-sm font-semibold group-hover:gap-2 transition-all">
-                    Book Now <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
-                  </span>
-                </div>
-              </div>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ SECTION 5: TRENDING PRODUCTS ═══ */}
+      {/* ═══ SECTION 4: TRENDING PRODUCTS ═══ */}
       <section className="py-10 md:py-16 bg-white">
         <div className="container mx-auto px-4">
           <SectionHeader title="Trending Now" subtitle="Our most loved pieces this season" ctaText="View All" ctaLink="/category/sofa-sets" />
@@ -377,123 +240,78 @@ const Homepage = () => {
         </div>
       </section>
 
-      {/* ═══ SECTION 6: SHOP BY ROOM ═══ */}
-      <section className="py-10 md:py-16 bg-[#F5EFE6]">
+      {/* ═══ SECTION 5: WHY CHOOSE US ═══ */}
+      <section className="py-12 md:py-20 bg-white">
         <div className="container mx-auto px-4">
-          <SectionHeader title="Shop by Room" subtitle="Find the perfect furniture for every space in your home" />
-          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
-            {rooms.map((room) => (
-              <Link key={room.name} to={room.link} className="group relative overflow-hidden rounded-2xl aspect-[4/5] sm:aspect-[3/4] block shadow-md hover:shadow-xl transition-shadow">
-                <LazyImage src={room.image} alt={room.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-5">
-                  <p className="text-white/60 text-xs font-medium uppercase tracking-widest mb-1">{room.items}</p>
-                  <h3 className="text-white text-xl font-bold mb-3">{room.name}</h3>
-                  <span className="inline-flex items-center gap-1 text-white/80 text-sm font-medium group-hover:text-white group-hover:gap-2 transition-all">
-                    Explore <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
-                  </span>
-                </div>
-              </Link>
-            ))}
+          <div className="text-center mb-10 md:mb-14">
+            <span className="inline-block bg-[#FFF5EE] text-[#C6A75E] px-4 py-1.5 rounded-full text-sm font-semibold mb-4">
+              Why Choose Velora Craft
+            </span>
+            <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-3">
+              Crafted with Care, Built to Last
+            </h2>
+            <p className="text-gray-500 text-sm md:text-base max-w-xl mx-auto">
+              We take pride in creating furniture that transforms houses into homes
+            </p>
           </div>
-        </div>
-      </section>
-
-      {/* ═══ SECTION 7: SHOP BY BUDGET ═══ */}
-      <section className="py-10 md:py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <SectionHeader title="Shop by Budget" subtitle="Quality furniture for every price range" />
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 max-w-5xl mx-auto">
-            {budgetRanges.map((budget) => (
-              <Link key={budget.label} to={budget.link} className={`group relative overflow-hidden rounded-xl p-4 sm:p-6 bg-gradient-to-br ${budget.color} text-white text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-1`}>
-                <p className="text-sm sm:text-lg md:text-xl font-bold mb-0.5 sm:mb-1">{budget.label}</p>
-                <p className="text-[10px] sm:text-xs text-white/70">{budget.range}</p>
-                <div className="mt-2 sm:mt-3 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <span className="text-[10px] sm:text-xs font-semibold border border-white/40 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full flex items-center gap-1 justify-center">Shop Now <ArrowRight className="w-3 h-3" /></span>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ SECTION 8: NEW ARRIVALS ═══ */}
-      <section className="py-10 md:py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <SectionHeader title="New Arrivals" subtitle="Fresh designs just added to our collection" ctaText="See All New" ctaLink="/category/sofa-sets" />
-          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
-            {featuredProducts.slice(4, 8).map((product) => (
-              <ProductCard key={`new-${product.id}`} product={product} onAddToCart={handleAddToCart} onAddToWishlist={handleAddToWishlist} onProductClick={handleProductClick} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ SECTION 9: WHY CHOOSE US ═══ */}
-      <section className="py-10 md:py-16 bg-[#F5EFE6]">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-8 md:mb-12">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-2 sm:mb-3">Why Choose A1 Furniture Studio</h2>
-            <p className="text-gray-500 text-xs sm:text-sm max-w-xl mx-auto">Trusted by 5,000+ happy customers across Mumbai since 2010</p>
-          </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 max-w-6xl mx-auto">
+          
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6 max-w-5xl mx-auto">
             {[
-              { icon: <IndianRupee className="w-6 h-6 sm:w-7 sm:h-7" />, title: 'Factory Direct', desc: 'No middlemen, honest pricing' },
-              { icon: <Sparkles className="w-6 h-6 sm:w-7 sm:h-7" />, title: 'Custom Made', desc: 'Built to your specifications' },
-              { icon: <TreePine className="w-6 h-6 sm:w-7 sm:h-7" />, title: 'Premium Wood', desc: 'Sheesham, Teak & Mango' },
-              { icon: <Truck className="w-6 h-6 sm:w-7 sm:h-7" />, title: 'Free Delivery', desc: 'Across Mumbai city' },
-              { icon: <Shield className="w-6 h-6 sm:w-7 sm:h-7" />, title: '5-Year Warranty', desc: 'Quality guaranteed' },
+              { icon: <IndianRupee className="w-7 h-7 md:w-8 md:h-8" />, title: 'Factory Direct Pricing', desc: 'No middlemen, best rates' },
+              { icon: <Sparkles className="w-7 h-7 md:w-8 md:h-8" />, title: 'Custom Made', desc: 'Your design, your choice' },
+              { icon: <TreePine className="w-7 h-7 md:w-8 md:h-8" />, title: 'Premium Wood', desc: 'Sheesham, Teak & Mango' },
+              { icon: <Truck className="w-7 h-7 md:w-8 md:h-8" />, title: 'Free Delivery', desc: 'Across Mumbai' },
+              { icon: <Shield className="w-7 h-7 md:w-8 md:h-8" />, title: '5-Year Warranty', desc: 'Quality assured' },
             ].map((item) => (
-              <div key={item.title} className="text-center group">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white rounded-xl sm:rounded-2xl flex items-center justify-center mx-auto mb-3 sm:mb-4 text-[#C6A75E] shadow-sm group-hover:shadow-md group-hover:scale-105 transition-all duration-300">{item.icon}</div>
-                <h3 className="font-semibold text-gray-900 mb-0.5 sm:mb-1 text-xs sm:text-sm md:text-base">{item.title}</h3>
-                <p className="text-gray-500 text-[10px] sm:text-xs">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ SECTION 10: TESTIMONIALS ═══ */}
-      <section className="py-10 md:py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <SectionHeader title="What Our Customers Say" subtitle="Real stories from real customers" />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 max-w-6xl mx-auto">
-            {testimonials.map((t) => (
-              <div key={t.name} className="bg-[#FAF8F5] rounded-2xl p-5 sm:p-6 hover:shadow-md transition-all duration-300 border border-[#EDE4D6]">
-                <div className="flex gap-0.5 mb-3">
-                  {[...Array(5)].map((_, i) => (
-                    <svg key={i} className={`w-4 h-4 ${i < t.rating ? 'text-[#C6A75E]' : 'text-gray-200'}`} fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                  ))}
-                </div>
-                <p className="text-gray-600 text-sm leading-relaxed mb-4 line-clamp-3">"{t.text}"</p>
-                <div className="text-xs text-[#C6A75E] font-medium mb-3">Purchased: {t.product}</div>
-                <div className="flex items-center gap-3 pt-3 border-t border-[#EDE4D6]">
-                  <div className="w-9 h-9 rounded-full bg-[#4A2F24] flex items-center justify-center text-white text-xs font-bold">{t.avatar}</div>
-                  <div>
-                    <p className="font-semibold text-gray-800 text-sm">{t.name}</p>
-                    <p className="text-xs text-gray-400">{t.location}</p>
+              <div 
+                key={item.title} 
+                className="group relative bg-white rounded-2xl p-5 md:p-6 text-center shadow-sm hover:shadow-xl border border-gray-100 hover:border-[#C6A75E]/30 transition-all duration-300"
+              >
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                  <div className="w-14 h-14 md:w-16 md:h-16 bg-[#FFF5EE] rounded-full flex items-center justify-center text-[#C6A75E] shadow-lg group-hover:bg-[#C6A75E] group-hover:text-white transition-colors duration-300">
+                    {item.icon}
                   </div>
                 </div>
+                <div className="pt-8 md:pt-10">
+                  <h3 className="font-bold text-gray-900 mb-1.5 text-sm md:text-base">{item.title}</h3>
+                  <p className="text-gray-500 text-xs md:text-sm">{item.desc}</p>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ═══ SECTION 11: NEWSLETTER ═══ */}
-      <section className="py-10 md:py-16 bg-[#4A2F24]">
+      {/* ═══ SECTION 6: NEWSLETTER ═══ */}
+      <section className="py-12 md:py-20 bg-[#FFF5EE]">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2 sm:mb-3">Get Exclusive Offers & Updates</h2>
-            <p className="text-white/60 text-xs sm:text-sm mb-4 sm:mb-6">Subscribe for 10% off your first order, new arrivals, and special deals</p>
-            <form className="flex flex-col sm:flex-row gap-2 sm:gap-3 max-w-lg mx-auto" onSubmit={(e) => e.preventDefault()}>
-              <input type="email" placeholder="Enter your email address" className="flex-1 px-4 py-2.5 sm:py-3 rounded-lg bg-white/10 border border-white/20 text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#C6A75E] placeholder:text-white/40" required />
-              <button type="submit" className="bg-white text-[#4A2F24] px-6 py-2.5 sm:py-3 rounded-lg font-semibold text-sm hover:bg-[#C6A75E] hover:text-white transition-colors whitespace-nowrap">Subscribe</button>
+            <div className="mb-6">
+              <div className="w-16 h-16 bg-[#C6A75E] rounded-full flex items-center justify-center mx-auto mb-4">
+                <Sparkles className="w-8 h-8 text-white" />
+              </div>
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+                Get Exclusive Offers & Updates
+              </h2>
+              <p className="text-gray-500 text-sm md:text-base">
+                Subscribe for 10% off your first order, new arrivals, and special deals
+              </p>
+            </div>
+            <form className="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto mb-4" onSubmit={(e) => e.preventDefault()}>
+              <input 
+                type="email" 
+                placeholder="Enter your email address" 
+                className="flex-1 px-5 py-3 rounded-xl border border-gray-200 text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#C6A75E] focus:border-transparent" 
+                required 
+              />
+              <button 
+                type="submit" 
+                className="bg-[#C6A75E] text-white px-8 py-3 rounded-xl font-semibold text-sm hover:bg-[#B0914A] transition-colors shadow-lg shadow-[#C6A75E]/20"
+              >
+                Subscribe
+              </button>
             </form>
-            <p className="text-white/40 text-[10px] sm:text-xs mt-3">No spam, unsubscribe anytime. We respect your privacy.</p>
+            <p className="text-gray-400 text-xs">No spam, unsubscribe anytime. We respect your privacy.</p>
           </div>
         </div>
       </section>
@@ -509,7 +327,7 @@ const SectionHeader = ({ title, subtitle, ctaText, ctaLink }: { title: string; s
       {subtitle && <p className="text-gray-500 text-xs sm:text-sm">{subtitle}</p>}
     </div>
     {ctaText && ctaLink && (
-      <Link to={ctaLink} className="inline-flex items-center gap-1 text-[#C6A75E] font-semibold text-xs sm:text-sm hover:text-[#B0914A] transition-colors whitespace-nowrap group border border-[#C6A75E]/30 px-3 py-1.5 rounded-full hover:border-[#C6A75E] hover:bg-[#C6A75E]/5">
+      <Link to={ctaLink} className="inline-flex items-center gap-1 text-[#C6A75E] font-semibold text-xs sm:text-sm hover:text-[#D45A1E] transition-colors whitespace-nowrap group">
         {ctaText}
         <svg className="w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
       </Link>

@@ -6,8 +6,6 @@ import { Building2, Phone, Sparkles, Wrench, MapPin } from 'lucide-react';
 interface MobileDrawerProps {
   isOpen: boolean;
   onClose: () => void;
-  isAuthenticated: boolean;
-  userName?: string;
   cartItemCount: number;
   wishlistItemCount: number;
 }
@@ -15,8 +13,6 @@ interface MobileDrawerProps {
 const MobileDrawer = ({
   isOpen,
   onClose,
-  isAuthenticated,
-  userName,
   cartItemCount,
   wishlistItemCount,
 }: MobileDrawerProps) => {
@@ -63,10 +59,10 @@ const MobileDrawer = ({
         }`}
       >
         {/* Header */}
-        <div className="bg-[#4A2F24] text-white p-5">
-          <div className="flex items-center justify-between mb-4">
+        <div className="bg-[#171717] text-white p-5">
+          <div className="flex items-center justify-between">
             <Link to="/" onClick={onClose} className="text-lg font-bold tracking-wide">
-              A1 Furniture Studio
+              Velora Craft
             </Link>
             <button
               onClick={onClose}
@@ -78,38 +74,6 @@ const MobileDrawer = ({
               </svg>
             </button>
           </div>
-
-          {/* User Section */}
-          {isAuthenticated ? (
-            <Link to="/account" onClick={onClose} className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
-              </div>
-              <div>
-                <p className="font-medium text-sm">Hello, {userName || 'User'}</p>
-                <p className="text-xs text-white/60">View Account</p>
-              </div>
-            </Link>
-          ) : (
-            <div className="flex gap-3">
-              <Link
-                to="/login"
-                onClick={onClose}
-                className="flex-1 text-center py-2 border border-white/30 rounded text-sm font-medium hover:bg-white/10 transition-colors"
-              >
-                Login
-              </Link>
-              <Link
-                to="/register"
-                onClick={onClose}
-                className="flex-1 text-center py-2 bg-[#C6A75E] rounded text-sm font-medium hover:bg-[#B0914A] transition-colors"
-              >
-                Sign Up
-              </Link>
-            </div>
-          )}
         </div>
 
         {/* Quick Actions */}
@@ -124,7 +88,7 @@ const MobileDrawer = ({
             </svg>
             <span className="text-xs">Cart</span>
             {cartItemCount > 0 && (
-              <span className="absolute top-2 right-6 bg-red-500 text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center">
+              <span className="absolute top-2 right-6 bg-brand-400 text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center">
                 {cartItemCount}
               </span>
             )}
@@ -139,7 +103,7 @@ const MobileDrawer = ({
             </svg>
             <span className="text-xs">Wishlist</span>
             {wishlistItemCount > 0 && (
-              <span className="absolute top-2 right-6 bg-red-500 text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center">
+              <span className="absolute top-2 right-6 bg-brand-400 text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center">
                 {wishlistItemCount}
               </span>
             )}

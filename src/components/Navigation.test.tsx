@@ -22,7 +22,7 @@ describe('Navigation Component', () => {
   it('renders logo', () => {
     renderNavigation();
     // Logo text appears in main header and mobile drawer
-    const logos = screen.getAllByText('A1 Furniture Studio');
+    const logos = screen.getAllByText('Velora Craft');
     expect(logos.length).toBeGreaterThanOrEqual(1);
   });
 
@@ -38,26 +38,6 @@ describe('Navigation Component', () => {
     expect(badges.length).toBeGreaterThanOrEqual(1);
   });
 
-  it('shows login when not authenticated', () => {
-    renderNavigation({ isAuthenticated: false });
-    const loginElements = screen.getAllByText('Login');
-    expect(loginElements.length).toBeGreaterThanOrEqual(1);
-  });
-
-  it('shows user name when authenticated', () => {
-    renderNavigation({ isAuthenticated: true, userName: 'John Doe' });
-    // userName appears in main nav
-    const userElements = screen.getAllByText('John Doe');
-    expect(userElements.length).toBeGreaterThanOrEqual(1);
-  });
-
-  it('renders announcement bar', () => {
-    renderNavigation();
-    // Announcement bar should show one of the rotating announcements
-    const announcements = screen.getAllByText(/FREE Delivery|Flat 20% OFF|Premium Polish|New Arrivals|Easy EMI/i);
-    expect(announcements.length).toBeGreaterThanOrEqual(1);
-  });
-
   it('renders search bar', () => {
     renderNavigation();
     const searchBars = screen.getAllByPlaceholderText(/Search for furniture/i);
@@ -66,6 +46,8 @@ describe('Navigation Component', () => {
 
   it('renders category navigation links on desktop', () => {
     renderNavigation();
-    expect(screen.getByText('All Categories')).toBeInTheDocument();
+    expect(screen.getAllByText('Sofas').length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByText('Beds').length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByText('Dining').length).toBeGreaterThanOrEqual(1);
   });
 });

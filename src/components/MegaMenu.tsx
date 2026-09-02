@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Sofa, BedDouble, UtensilsCrossed, Archive, Briefcase, Sparkles, Wrench, ArrowRight } from 'lucide-react';
+import { Sofa, BedDouble, Sparkles, Hammer, ArrowRight, Sparkles as SparklesIcon } from 'lucide-react';
 
 export interface MegaMenuCategory {
   label: string;
@@ -60,51 +60,6 @@ const megaMenuData: MegaMenuCategory[] = [
     highlight: 'Starting ₹15,999',
   },
   {
-    label: 'Dining',
-    path: '/category/dining-tables',
-    icon: <UtensilsCrossed className="w-5 h-5" />,
-    subcategories: [
-      { label: '4-Seater Dining Sets', path: '/category/dining-tables?sub=4-seater' },
-      { label: '6-Seater Dining Sets', path: '/category/dining-tables?sub=6-seater' },
-      { label: '8-Seater Dining Sets', path: '/category/dining-tables?sub=8-seater' },
-      { label: 'Dining Chairs', path: '/category/dining-tables?sub=chairs' },
-      { label: 'Dining Benches', path: '/category/dining-tables?sub=benches' },
-    ],
-    featured: [
-      {
-        label: 'Sheesham Dining Table',
-        path: '/product/prod-10',
-        imageUrl: 'https://images.unsplash.com/photo-1617806118233-18e1de247200?w=300&h=200&fit=crop',
-      },
-    ],
-    highlight: 'New Arrivals',
-  },
-  {
-    label: 'Storage',
-    path: '/category/wardrobes-storage',
-    icon: <Archive className="w-5 h-5" />,
-    subcategories: [
-      { label: 'Wardrobes', path: '/category/wardrobes-storage?sub=wardrobes' },
-      { label: 'Chest of Drawers', path: '/category/wardrobes-storage?sub=drawers' },
-      { label: 'Shoe Racks', path: '/category/wardrobes-storage?sub=shoe-racks' },
-      { label: 'Book Shelves', path: '/category/wardrobes-storage?sub=bookshelves' },
-      { label: 'TV Units', path: '/category/wardrobes-storage?sub=tv-units' },
-    ],
-    highlight: 'Flat 15% OFF',
-  },
-  {
-    label: 'Office',
-    path: '/category/office-furniture',
-    icon: <Briefcase className="w-5 h-5" />,
-    subcategories: [
-      { label: 'Office Desks', path: '/category/office-furniture?sub=desks' },
-      { label: 'Office Chairs', path: '/category/office-furniture?sub=chairs' },
-      { label: 'Study Tables', path: '/category/office-furniture?sub=study' },
-      { label: 'Filing Cabinets', path: '/category/office-furniture?sub=cabinets' },
-    ],
-    highlight: 'WFH Essentials',
-  },
-  {
     label: 'Custom Furniture',
     path: '/custom-furniture',
     icon: <Sparkles className="w-5 h-5" />,
@@ -118,16 +73,56 @@ const megaMenuData: MegaMenuCategory[] = [
     highlight: 'Made for You',
   },
   {
-    label: 'Repair & Polish',
-    path: '/repair-polish',
-    icon: <Wrench className="w-5 h-5" />,
+    label: 'Polish Services',
+    path: '/polish',
+    icon: <SparklesIcon className="w-5 h-5" />,
     subcategories: [
-      { label: 'Sofa Repair', path: '/repair-polish?type=sofa-repair' },
-      { label: 'Chair Repair', path: '/repair-polish?type=chair-repair' },
-      { label: 'Wood Polish', path: '/repair-polish?type=polish' },
-      { label: 'Upholstery', path: '/repair-polish?type=upholstery' },
+      { label: 'Basic Polish', path: '/polish?type=basic' },
+      { label: 'Deep Polish', path: '/polish?type=deep' },
+      { label: 'High Gloss Polish', path: '/polish?type=gloss' },
+      { label: 'Matte Finish', path: '/polish?type=matte' },
+      { label: 'Antique Restoration', path: '/polish?type=antique' },
+      { label: 'Duco Polish', path: '/polish?type=duco' },
     ],
-    highlight: 'Starting ₹2,999',
+    featured: [
+      {
+        label: 'Dining Table Polish',
+        path: '/polish',
+        imageUrl: 'https://images.unsplash.com/photo-1617806118233-18e1de247200?w=300&h=200&fit=crop',
+      },
+      {
+        label: 'Wardrobe Restoration',
+        path: '/polish',
+        imageUrl: 'https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=300&h=200&fit=crop',
+      },
+    ],
+    highlight: 'From ₹1,500',
+  },
+  {
+    label: 'Repair Services',
+    path: '/repair',
+    icon: <Hammer className="w-5 h-5" />,
+    subcategories: [
+      { label: 'Structural Repair', path: '/repair?type=structural' },
+      { label: 'Joint Repair', path: '/repair?type=joint' },
+      { label: 'Wood Damage', path: '/repair?type=wood' },
+      { label: 'Upholstery Repair', path: '/repair?type=upholstery' },
+      { label: 'Hardware Replacement', path: '/repair?type=hardware' },
+      { label: 'Complete Restoration', path: '/repair?type=restoration' },
+    ],
+    featured: [
+      {
+        label: 'Chair Repair',
+        path: '/repair',
+        imageUrl: 'https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=300&h=200&fit=crop',
+      },
+      {
+        label: 'Table Restoration',
+        path: '/repair',
+        imageUrl: 'https://images.unsplash.com/photo-1533090481720-856c6e3c1fdc?w=300&h=200&fit=crop',
+      },
+    ],
+    highlight: 'From ₹2,000',
   },
 ];
 

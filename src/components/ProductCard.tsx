@@ -37,12 +37,11 @@ const ProductCard = ({
 
   const displayPrice = product.discountPrice ?? product.price;
   const hasDiscount = product.discountPrice !== undefined && product.discountPrice < product.price;
-  const savings = hasDiscount ? product.price - displayPrice : 0;
 
   return (
     <div
       onClick={handleCardClick}
-      className="bg-white rounded-xl border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer group relative"
+      className="bg-[#FBF9F5] rounded-xl border border-[#C6A75E]/10 overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer group relative"
     >
       {/* Product Image */}
       <div className="relative overflow-hidden aspect-[4/3]">
@@ -54,11 +53,6 @@ const ProductCard = ({
 
         {/* Top Badges */}
         <div className="absolute top-2 left-2 sm:top-3 sm:left-3 flex flex-col gap-1 sm:gap-1.5">
-          {hasDiscount && product.discountPercentage && (
-            <span className="bg-red-500 text-white text-[9px] sm:text-[11px] font-bold px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded-md shadow-sm">
-              {product.discountPercentage}% OFF
-            </span>
-          )}
           {product.subcategory && (
             <span className="bg-white/90 backdrop-blur-sm text-gray-700 text-[8px] sm:text-[10px] font-medium px-1.5 sm:px-2 py-0.5 rounded">
               {product.subcategory}
@@ -109,7 +103,7 @@ const ProductCard = ({
               addedToCart
                 ? 'bg-green-500 text-white'
                 : product.inStock
-                  ? 'bg-[#C6A75E] text-white hover:bg-[#B0914A] active:scale-[0.98]'
+                  ? 'bg-[#C6A75E] text-white hover:bg-[#A9894D] active:scale-[0.98]'
                   : 'bg-gray-300 text-gray-500 cursor-not-allowed'
             }`}
           >
@@ -128,9 +122,9 @@ const ProductCard = ({
       </div>
 
       {/* Product Info */}
-      <div className="p-3 sm:p-4">
+      <div className="p-3 sm:p-4 md:p-5">
         {/* Product Name */}
-        <h3 className="text-xs sm:text-sm font-medium text-gray-800 mb-1 sm:mb-1.5 line-clamp-2 leading-snug group-hover:text-[#C6A75E] transition-colors">
+        <h3 className="text-sm sm:text-base font-medium text-gray-800 mb-1 sm:mb-1.5 line-clamp-2 leading-snug group-hover:text-[#C6A75E] transition-colors">
           {product.name}
         </h3>
 
@@ -138,33 +132,28 @@ const ProductCard = ({
         <div className="flex items-center gap-1 sm:gap-1.5 mb-1.5 sm:mb-2">
           {product.ratingCount > 0 ? (
             <>
-              <span className="inline-flex items-center gap-0.5 bg-green-600 text-white text-[10px] sm:text-[11px] font-bold px-1 sm:px-1.5 py-0.5 rounded">
+              <span className="inline-flex items-center gap-0.5 bg-brand-400 text-white text-xs sm:text-sm font-bold px-1 sm:px-1.5 py-0.5 rounded">
                 {product.rating.toFixed(1)}
                 <svg className="w-2 h-2 sm:w-2.5 sm:h-2.5" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                 </svg>
               </span>
-              <span className="text-[10px] sm:text-xs text-gray-400">({product.ratingCount})</span>
+              <span className="text-xs sm:text-sm text-gray-400">({product.ratingCount})</span>
             </>
           ) : (
-            <span className="text-[10px] sm:text-xs text-gray-400">No ratings yet</span>
+            <span className="text-xs sm:text-sm text-gray-400">No ratings yet</span>
           )}
         </div>
 
         {/* Price */}
         <div className="flex items-baseline flex-wrap gap-x-1.5 sm:gap-x-2 gap-y-0.5">
-          <span className="text-sm sm:text-lg font-bold text-gray-900">
+          <span className="text-sm sm:text-lg font-bold text-[#171717]">
             ₹{displayPrice.toLocaleString()}
           </span>
           {hasDiscount && (
-            <>
-              <span className="text-xs sm:text-sm text-gray-400 line-through">
-                ₹{product.price.toLocaleString()}
-              </span>
-              <span className="text-[10px] sm:text-xs font-semibold text-green-600">
-                Save ₹{savings.toLocaleString()}
-              </span>
-            </>
+            <span className="text-xs sm:text-sm text-gray-400 line-through">
+              ₹{product.price.toLocaleString()}
+            </span>
           )}
         </div>
 

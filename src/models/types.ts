@@ -1,4 +1,4 @@
-// Core Data Models and Types for A1 Furniture Studio E-Commerce
+// Core Data Models and Types for Velora Craft E-Commerce
 
 // ============================================================================
 // Supporting Types

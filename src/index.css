@@ -1,42 +1,57 @@
 @import "tailwindcss";
 
 /* ═══════════════════════════════════════════════════
-   A1 Furniture Studio — Design System Tokens
+   VELORA CRAFT — Design System Tokens
+   Premium Furniture. Timeless Craftsmanship.
+   
+   Color Formula: 70% Warm Ivory + 20% Matte Black + 10% Champagne Gold
    ═══════════════════════════════════════════════════ */
 
 :root {
-  /* Brand palette */
-  --color-primary: #C6A75E;
-  --color-primary-dark: #B0914A;
-  --color-primary-light: #D4BC7E;
-  --color-secondary: #4A2F24;
-  --color-secondary-dark: #3A2119;
-
-  /* Semantic */
-  --color-accent: #C6A75E;
+  /* ════ Brand Color Palette ════ */
+  
+  /* Primary — Matte Black (20%) */
+  --color-primary: #171717;
+  --color-primary-dark: #0d0d0d;
+  --color-primary-light: #2a2a2a;
+  
+  /* Accent — Champagne Gold (10%) */
+  --color-gold: #C5A15A;
+  --color-gold-dark: #A9894D;
+  --color-gold-light: #D4BC7E;
+  
+  /* ════ Backgrounds ════ */
+  
+  /* Main — Warm Ivory (70%) */
+  --color-bg: #F7F3EC;
+  --color-bg-alt: #FBF9F5;
+  --color-bg-dark: #EDE4D6;
+  
+  /* ════ Text Colors ════ */
+  
+  --color-text: #171717;        /* Matte Black */
+  --color-text-secondary: #292929; /* Deep Charcoal */
+  --color-text-muted: #6b7280;
+  --color-text-light: #f7f7f7;
+  
+  /* ════ Semantic Colors ════ */
+  --color-accent: #C5A15A;
   --color-success: #10b981;
   --color-error: #ef4444;
   --color-warning: #f59e0b;
-
-  /* Neutrals */
-  --color-text: #2E2E2E;
-  --color-text-light: #64748b;
-  --color-bg: #FAF8F5;
-  --color-bg-gray: #f8fafc;
-  --color-bg-warm: #F5EFE6;
-  --color-border: #e2e8f0;
-
-  /* Warm tones */
-  --color-warm-50: #F5EFE6;
-  --color-warm-100: #EDE4D6;
-
-  /* Radius system */
-  --radius-sm: 0.375rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 0.75rem;
-  --radius-xl: 1rem;
-
-  /* Transition */
+  
+  /* ════ Borders ════ */
+  --color-border: rgba(197, 161, 90, 0.15);
+  --color-border-light: rgba(0, 0, 0, 0.06);
+  
+  /* ════ Radius System ════ */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+  
+  /* ════ Transitions ════ */
   --transition-fast: 150ms ease;
   --transition-base: 200ms ease-in-out;
   --transition-slow: 300ms ease;
@@ -59,7 +74,7 @@ body {
 
 /* Better focus styles for accessibility */
 *:focus-visible {
-  outline: 2px solid var(--color-primary);
+  outline: 2px solid var(--color-gold);
   outline-offset: 2px;
 }
 
@@ -106,7 +121,7 @@ img {
 
 /* Premium gradient text */
 .gradient-text {
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+  background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-light) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -173,8 +188,8 @@ h3 { font-size: 1.25rem;  line-height: 1.75rem; }
 }
 
 @keyframes glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(193, 125, 60, 0.3); }
-  50%      { box-shadow: 0 0 40px rgba(193, 125, 60, 0.6); }
+  0%, 100% { box-shadow: 0 0 20px rgba(197, 161, 90, 0.2); }
+  50%      { box-shadow: 0 0 40px rgba(197, 161, 90, 0.4); }
 }
 
 @keyframes spin {
@@ -204,8 +219,8 @@ h3 { font-size: 1.25rem;  line-height: 1.75rem; }
 
 /* Loading spinner */
 .spinner {
-  border: 3px solid rgba(0, 0, 0, 0.1);
-  border-left-color: var(--color-primary);
+  border: 3px solid rgba(0, 0, 0, 0.08);
+  border-left-color: var(--color-gold);
   border-radius: 50%;
   width: 40px;
   height: 40px;

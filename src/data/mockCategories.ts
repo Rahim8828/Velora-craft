@@ -1,7 +1,7 @@
 import type { Category } from '../models/types';
 
 /**
- * Mock category data for A1 Furniture Studio
+ * Mock category data for Velora Craft
  * 8 main categories as per requirements
  */
 export const mockCategories: Category[] = [
@@ -18,27 +18,6 @@ export const mockCategories: Category[] = [
     slug: 'beds-mattresses',
     imageUrl: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=400&h=300&fit=crop',
     productCount: 4
-  },
-  {
-    id: 'cat-3',
-    name: 'Dining Tables',
-    slug: 'dining-tables',
-    imageUrl: 'https://images.unsplash.com/photo-1617806118233-18e1de247200?w=400&h=300&fit=crop',
-    productCount: 3
-  },
-  {
-    id: 'cat-4',
-    name: 'Wardrobes & Storage',
-    slug: 'wardrobes-storage',
-    imageUrl: 'https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=400&h=300&fit=crop',
-    productCount: 3
-  },
-  {
-    id: 'cat-5',
-    name: 'Office Furniture',
-    slug: 'office-furniture',
-    imageUrl: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=400&h=300&fit=crop',
-    productCount: 3
   },
   {
     id: 'cat-6',

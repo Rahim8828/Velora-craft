@@ -49,7 +49,7 @@ const Footer = () => {
     },
     {
       name: 'YouTube',
-      url: 'https://youtube.com/@a1furniturestudio',
+      url: 'https://youtube.com/@veloracraft',
       icon: (
         <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
           <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
@@ -59,19 +59,26 @@ const Footer = () => {
   ];
 
   const handleWhatsAppClick = () => {
-    const phoneNumber = '919876543210'; // Replace with actual WhatsApp business number
+    const phoneNumber = '919876543210';
     const message = encodeURIComponent('Hello! I would like to inquire about your furniture.');
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
   };
 
   return (
-    <footer className="bg-[#F5EFE6] text-gray-600">
+    <footer className="bg-[#171717] text-[#F7F3EC]">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div>
-            <h3 className="text-gray-900 text-xl font-bold mb-4">A1 Furniture Studio</h3>
-            <p className="text-sm mb-4">
+            <div className="mb-4">
+              <img 
+                src="/logo-transparent.png" 
+                alt="Velora Craft" 
+                className="h-12 w-auto object-contain"
+                style={{ height: '48px', maxHeight: '48px', maxWidth: '220px', width: 'auto' }}
+              />
+            </div>
+            <p className="text-sm mb-4 text-[#F7F3EC]/80">
               Premium quality furniture with factory-direct pricing. Custom-made furniture,
               repair, and polish services in Mumbai.
             </p>
@@ -96,7 +103,7 @@ const Footer = () => {
                     d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                   />
                 </svg>
-                <span>123 Furniture Street, Andheri West, Mumbai, Maharashtra 400053</span>
+                <span>Laxmi Nagar, Gala No. 15, Laal Mitti, off New Link Road, Goregaon West, Mumbai, Maharashtra 400104</span>
               </p>
               <p className="flex items-center">
                 <svg
@@ -131,10 +138,10 @@ const Footer = () => {
                   />
                 </svg>
                 <a
-                  href="mailto:info@a1furniturestudio.com"
+                  href="mailto:info@veloracraft.com"
                   className="hover:text-[#C6A75E] transition-colors"
                 >
-                  info@a1furniturestudio.com
+                  info@veloracraft.com
                 </a>
               </p>
             </div>
@@ -142,13 +149,13 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-gray-900 text-lg font-semibold mb-4">Quick Links</h3>
+            <h3 className="text-[#F7F3EC] text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.path}>
                   <Link
                     to={link.path}
-                    className="text-sm hover:text-[#C6A75E] transition-colors"
+                    className="text-sm hover:text-[#C6A75E] transition-colors text-[#F7F3EC]/80"
                   >
                     {link.label}
                   </Link>
@@ -159,13 +166,13 @@ const Footer = () => {
 
           {/* Categories */}
           <div>
-            <h3 className="text-gray-900 text-lg font-semibold mb-4">Categories</h3>
+            <h3 className="text-[#F7F3EC] text-lg font-semibold mb-4">Categories</h3>
             <ul className="space-y-2">
               {categories.map((category) => (
                 <li key={category.path}>
                   <Link
                     to={category.path}
-                    className="text-sm hover:text-[#C6A75E] transition-colors"
+                    className="text-sm hover:text-[#C6A75E] transition-colors text-[#F7F3EC]/80"
                   >
                     {category.label}
                   </Link>
@@ -176,8 +183,8 @@ const Footer = () => {
 
           {/* Customer Support */}
           <div>
-            <h3 className="text-gray-900 text-lg font-semibold mb-4">Customer Support</h3>
-            <ul className="space-y-2 text-sm mb-4">
+            <h3 className="text-[#F7F3EC] text-lg font-semibold mb-4">Customer Support</h3>
+            <ul className="space-y-2 text-sm mb-4 text-[#F7F3EC]/80">
               <li>
                 <Link to="/shipping-policy" className="hover:text-[#C6A75E] transition-colors">
                   Shipping Policy
@@ -199,8 +206,8 @@ const Footer = () => {
                 </Link>
               </li>
             </ul>
-            <div>
-              <p className="text-sm font-semibold mb-2">Business Hours:</p>
+            <div className="text-[#F7F3EC]/80">
+              <p className="text-sm font-semibold mb-2 text-[#F7F3EC]">Business Hours:</p>
               <p className="text-sm">Mon - Sat: 10:00 AM - 8:00 PM</p>
               <p className="text-sm">Sunday: 11:00 AM - 6:00 PM</p>
             </div>
@@ -208,17 +215,17 @@ const Footer = () => {
         </div>
 
         {/* Social Media & WhatsApp */}
-        <div className="border-t border-[#E5DCD0] mt-8 pt-8">
+        <div className="border-t border-[#C6A75E]/20 mt-8 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center space-x-4 mb-4 md:mb-0">
-              <span className="text-sm text-gray-500">Follow Us:</span>
+              <span className="text-sm text-[#F7F3EC]/80">Follow Us:</span>
               {socialMedia.map((social) => (
                 <a
                   key={social.name}
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-500 hover:text-[#C6A75E] transition-colors"
+                  className="text-[#F7F3EC]/80 hover:text-[#C6A75E] transition-colors"
                   aria-label={social.name}
                 >
                   {social.icon}
@@ -238,9 +245,9 @@ const Footer = () => {
         </div>
 
         {/* Copyright */}
-        <div className="border-t border-[#E5DCD0] mt-8 pt-8 text-center text-sm text-gray-500">
+        <div className="border-t border-[#C6A75E]/20 mt-8 pt-8 text-center text-sm text-[#F7F3EC]/80">
           <p>
-            &copy; {currentYear} A1 Furniture Studio. All rights reserved. | Trusted Local Brand
+            &copy; {currentYear} Velora Craft. All rights reserved. | Trusted Local Brand
             Since 2010
           </p>
         </div>

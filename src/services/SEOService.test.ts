@@ -6,7 +6,7 @@ describe('SEOService', () => {
   let seoService: SEOService;
 
   beforeEach(() => {
-    seoService = new SEOService('https://a1furniturestudio.com');
+    seoService = new SEOService('https://veloracraft.com');
   });
 
   describe('generateProductSchema', () => {
@@ -141,10 +141,10 @@ describe('SEOService', () => {
     it('should generate meta tags for homepage', () => {
       const meta = seoService.generatePageMeta('HOME');
 
-      expect(meta.title).toContain('A1 Furniture Studio');
+      expect(meta.title).toContain('Velora Craft');
       expect(meta.description).toBeTruthy();
       expect(meta.keywords.length).toBeGreaterThan(0);
-      expect(meta.canonicalUrl).toBe('https://a1furniturestudio.com');
+      expect(meta.canonicalUrl).toBe('https://veloracraft.com');
     });
 
     it('should generate meta tags for product page', () => {
@@ -175,7 +175,7 @@ describe('SEOService', () => {
 
       expect(meta.title).toContain('Luxury Sofa');
       expect(meta.title).toContain('₹50,000');
-      expect(meta.canonicalUrl).toBe('https://a1furniturestudio.com/products/luxury-sofa');
+      expect(meta.canonicalUrl).toBe('https://veloracraft.com/products/luxury-sofa');
       expect(meta.ogImage).toBe('sofa.jpg');
     });
 
@@ -192,21 +192,21 @@ describe('SEOService', () => {
 
       expect(meta.title).toContain('Sofa Sets');
       expect(meta.description).toContain('sofa sets');
-      expect(meta.canonicalUrl).toBe('https://a1furniturestudio.com/category/sofa-sets');
+      expect(meta.canonicalUrl).toBe('https://veloracraft.com/category/sofa-sets');
     });
 
     it('should generate meta tags for about page', () => {
       const meta = seoService.generatePageMeta('ABOUT');
 
       expect(meta.title).toContain('About Us');
-      expect(meta.canonicalUrl).toBe('https://a1furniturestudio.com/about');
+      expect(meta.canonicalUrl).toBe('https://veloracraft.com/about');
     });
 
     it('should generate meta tags for contact page', () => {
       const meta = seoService.generatePageMeta('CONTACT');
 
       expect(meta.title).toContain('Contact');
-      expect(meta.canonicalUrl).toBe('https://a1furniturestudio.com/contact');
+      expect(meta.canonicalUrl).toBe('https://veloracraft.com/contact');
     });
 
     it('should generate meta tags for search page', () => {
@@ -222,7 +222,7 @@ describe('SEOService', () => {
       const sitemap = seoService.generateSitemap();
 
       expect(sitemap.entries.length).toBeGreaterThan(0);
-      const homepage = sitemap.entries.find(e => e.url === 'https://a1furniturestudio.com');
+      const homepage = sitemap.entries.find(e => e.url === 'https://veloracraft.com');
       expect(homepage).toBeDefined();
       expect(homepage?.priority).toBe(1.0);
     });

@@ -9,7 +9,6 @@ import ScrollToTop from './components/ScrollToTop';
 import LoadingSpinner from './components/LoadingSpinner';
 import { cartService } from './services/CartService';
 import { wishlistService } from './services/WishlistService';
-import { authService } from './services/AuthService';
 import './App.css';
 
 // Lazy load page components for code splitting
@@ -20,10 +19,10 @@ const SearchResults = lazy(() => import('./pages/SearchResults'));
 const CartPage = lazy(() => import('./pages/CartPage'));
 const WishlistPage = lazy(() => import('./pages/WishlistPage'));
 const CheckoutPage = lazy(() => import('./pages/CheckoutPage'));
-const LoginPage = lazy(() => import('./pages/LoginPage'));
-const RegistrationPage = lazy(() => import('./pages/RegistrationPage'));
 const CustomFurniturePage = lazy(() => import('./pages/CustomFurniturePage'));
 const RepairPolishPage = lazy(() => import('./pages/RepairPolishPage'));
+const PolishPage = lazy(() => import('./pages/PolishPage'));
+const RepairPage = lazy(() => import('./pages/RepairPage'));
 const AboutPage = lazy(() => import('./pages/AboutPage'));
 const ContactPage = lazy(() => import('./pages/ContactPage'));
 const ShippingPolicyPage = lazy(() => import('./pages/ShippingPolicyPage'));
@@ -36,32 +35,19 @@ function AppContent() {
   const navigate = useNavigate();
   const [cartItemCount, setCartItemCount] = useState(0);
   const [wishlistItemCount, setWishlistItemCount] = useState(0);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [userName, setUserName] = useState<string | undefined>(undefined);
 
   useEffect(() => {
     // Initialize counts on mount
     const initializeCounts = () => {
       setCartItemCount(cartService.getItemCount());
       setWishlistItemCount(wishlistService.getItemCount());
-      setIsAuthenticated(authService.isAuthenticated());
     };
     initializeCounts();
     
-    const user = authService.getCurrentUser();
-    if (user) {
-      // Use queueMicrotask to avoid setState in effect warning
-      queueMicrotask(() => setUserName(user.name));
-    }
-
     // Set up interval to update counts (simple approach for now)
     const interval = setInterval(() => {
       setCartItemCount(cartService.getItemCount());
       setWishlistItemCount(wishlistService.getItemCount());
-      setIsAuthenticated(authService.isAuthenticated());
-      
-      const currentUser = authService.getCurrentUser();
-      setUserName(currentUser?.name);
     }, 1000);
 
     return () => clearInterval(interval);
@@ -78,8 +64,6 @@ function AppContent() {
       <Navigation
         cartItemCount={cartItemCount}
         wishlistItemCount={wishlistItemCount}
-        isAuthenticated={isAuthenticated}
-        userName={userName}
         onSearch={handleSearch}
       />
       <main className="flex-grow">
@@ -96,10 +80,10 @@ function AppContent() {
             <Route path="/cart" element={<CartPage />} />
             <Route path="/wishlist" element={<WishlistPage />} />
             <Route path="/checkout" element={<CheckoutPage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/register" element={<RegistrationPage />} />
             <Route path="/custom-furniture" element={<CustomFurniturePage />} />
             <Route path="/repair-polish" element={<RepairPolishPage />} />
+            <Route path="/polish" element={<PolishPage />} />
+            <Route path="/repair" element={<RepairPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/shipping-policy" element={<ShippingPolicyPage />} />

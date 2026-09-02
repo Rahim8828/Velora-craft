@@ -1,4 +1,4 @@
-# A1 Furniture Studio E-Commerce Website
+# Velora Craft E-Commerce Website
 
 A modern, premium furniture e-commerce platform built with React, TypeScript, and Tailwind CSS.
 
@@ -103,4 +103,4 @@ npm run test
 
 ## License
 
-Private - A1 Furniture Studio
+Private - Velora Craft

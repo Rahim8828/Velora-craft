@@ -14,7 +14,7 @@ describe('Footer Component', () => {
 
   it('renders company name', () => {
     renderFooter();
-    expect(screen.getByText('A1 Furniture Studio')).toBeInTheDocument();
+    expect(screen.getByText('Velora Craft')).toBeInTheDocument();
   });
 
   it('displays phone number', () => {
@@ -24,7 +24,7 @@ describe('Footer Component', () => {
 
   it('displays email address', () => {
     renderFooter();
-    expect(screen.getByText('info@a1furniturestudio.com')).toBeInTheDocument();
+    expect(screen.getByText('info@veloracraft.com')).toBeInTheDocument();
   });
 
   it('displays physical address', () => {
@@ -55,7 +55,7 @@ describe('Footer Component', () => {
     renderFooter();
     const currentYear = new Date().getFullYear();
     expect(
-      screen.getByText(new RegExp(`© ${currentYear} A1 Furniture Studio`))
+      screen.getByText(new RegExp(`© ${currentYear} Velora Craft`))
     ).toBeInTheDocument();
   });
 

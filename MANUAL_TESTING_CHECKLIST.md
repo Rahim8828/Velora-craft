@@ -1,6 +1,6 @@
 # Manual Testing Checklist - Core User Flows
 
-This document provides a checklist for manually testing the core user flows of the A1 Furniture Studio e-commerce website.
+This document provides a checklist for manually testing the core user flows of the Velora Craft e-commerce website.
 
 ## Test Environment Setup
 

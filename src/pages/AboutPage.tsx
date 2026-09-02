@@ -16,7 +16,7 @@ const AboutPage: React.FC = () => {
 
       {/* Hero Section */}
       <section className="mb-12 text-center">
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">About A1 Furniture Studio</h1>
+        <h1 className="text-4xl font-bold text-gray-900 mb-4">About Velora Craft</h1>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto">
           Crafting premium furniture for modern living spaces since our inception
         </p>
@@ -28,7 +28,7 @@ const AboutPage: React.FC = () => {
           <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Story</h2>
           <div className="prose prose-lg text-gray-700 space-y-4">
             <p>
-              A1 Furniture Studio was born from a passion for creating beautiful, functional furniture 
+              Velora Craft was born from a passion for creating beautiful, functional furniture 
               that transforms houses into homes. We believe that every piece of furniture tells a story 
               and plays a vital role in shaping the spaces where life happens.
             </p>

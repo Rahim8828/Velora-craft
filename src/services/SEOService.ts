@@ -23,7 +23,7 @@ export interface PageMeta {
   ogImage?: string;
 }
 
-export type PageType = 'HOME' | 'PRODUCT' | 'CATEGORY' | 'ABOUT' | 'CONTACT' | 'CART' | 'WISHLIST' | 'CHECKOUT' | 'CUSTOM_FURNITURE' | 'REPAIR_POLISH' | 'SEARCH' | 'SHIPPING_POLICY' | 'RETURN_POLICY' | 'WARRANTY' | 'FAQ' | 'LOGIN' | 'REGISTER' | 'NOT_FOUND';
+export type PageType = 'HOME' | 'PRODUCT' | 'CATEGORY' | 'ABOUT' | 'CONTACT' | 'CART' | 'WISHLIST' | 'CHECKOUT' | 'CUSTOM_FURNITURE' | 'REPAIR_POLISH' | 'POLISH' | 'REPAIR' | 'SEARCH' | 'SHIPPING_POLICY' | 'RETURN_POLICY' | 'WARRANTY' | 'FAQ' | 'NOT_FOUND';
 
 export interface SitemapEntry {
   url: string;
@@ -43,7 +43,7 @@ export interface Sitemap {
 export class SEOService {
   private baseUrl: string;
 
-  constructor(baseUrl: string = 'https://a1furniturestudio.com') {
+  constructor(baseUrl: string = 'https://veloracraft.com') {
     this.baseUrl = baseUrl;
   }
 
@@ -61,7 +61,7 @@ export class SEOService {
       image: this.getProductImages(product),
       brand: {
         '@type': 'Brand',
-        name: 'A1 Furniture Studio'
+        name: 'Velora Craft'
       },
       offers: {
         '@type': 'Offer',
@@ -102,11 +102,11 @@ export class SEOService {
     switch (pageType) {
       case 'HOME':
         return {
-          title: 'A1 Furniture Studio - Premium Furniture in Mumbai | Factory Direct Pricing',
+          title: 'Velora Craft - Premium Furniture in Mumbai | Factory Direct Pricing',
           description: 'Discover premium quality furniture at factory direct prices. Custom-made sofas, beds, dining tables, wardrobes & office furniture. Free delivery in Mumbai. Trusted local brand.',
           keywords: ['furniture Mumbai', 'custom furniture', 'sofa sets', 'beds', 'dining tables', 'wardrobes', 'office furniture', 'furniture repair', 'furniture polish'],
           canonicalUrl: this.baseUrl,
-          ogImage: `${this.baseUrl}/images/og-home.jpg`
+          ogImage: `${this.baseUrl}/velora-logo.png`
         };
 
       case 'PRODUCT':
@@ -117,25 +117,25 @@ export class SEOService {
 
       case 'ABOUT':
         return {
-          title: 'About Us - A1 Furniture Studio | Premium Furniture Manufacturer',
-          description: 'Learn about A1 Furniture Studio, Mumbai\'s trusted furniture manufacturer. We specialize in custom-made furniture with premium quality and factory direct pricing.',
-          keywords: ['about A1 Furniture', 'furniture manufacturer Mumbai', 'custom furniture maker'],
+          title: 'About Us - Velora Craft | Premium Furniture Manufacturer',
+          description: 'Learn about Velora Craft, Mumbai\'s trusted furniture manufacturer. We specialize in custom-made furniture with premium quality and factory direct pricing.',
+          keywords: ['about Velora Craft', 'furniture manufacturer Mumbai', 'custom furniture maker'],
           canonicalUrl: `${this.baseUrl}/about`,
-          ogImage: `${this.baseUrl}/images/og-about.jpg`
+          ogImage: `${this.baseUrl}/velora-logo.png`
         };
 
       case 'CONTACT':
         return {
-          title: 'Contact Us - A1 Furniture Studio | Get in Touch',
-          description: 'Contact A1 Furniture Studio for inquiries about custom furniture, repairs, or orders. Visit our showroom in Mumbai or reach us via phone, email, or WhatsApp.',
+          title: 'Contact Us - Velora Craft | Get in Touch',
+          description: 'Contact Velora Craft for inquiries about custom furniture, repairs, or orders. Visit our showroom in Mumbai or reach us via phone, email, or WhatsApp.',
           keywords: ['contact furniture store', 'furniture showroom Mumbai', 'furniture inquiry'],
           canonicalUrl: `${this.baseUrl}/contact`,
-          ogImage: `${this.baseUrl}/images/og-contact.jpg`
+          ogImage: `${this.baseUrl}/velora-logo.png`
         };
 
       case 'CART':
         return {
-          title: 'Shopping Cart - A1 Furniture Studio',
+          title: 'Shopping Cart - Velora Craft',
           description: 'Review your selected furniture items and proceed to checkout.',
           keywords: ['shopping cart', 'furniture cart'],
           canonicalUrl: `${this.baseUrl}/cart`
@@ -143,7 +143,7 @@ export class SEOService {
 
       case 'WISHLIST':
         return {
-          title: 'My Wishlist - A1 Furniture Studio',
+          title: 'My Wishlist - Velora Craft',
           description: 'View your saved furniture items and add them to cart when ready.',
           keywords: ['wishlist', 'saved furniture'],
           canonicalUrl: `${this.baseUrl}/wishlist`
@@ -151,7 +151,7 @@ export class SEOService {
 
       case 'CHECKOUT':
         return {
-          title: 'Checkout - A1 Furniture Studio',
+          title: 'Checkout - Velora Craft',
           description: 'Complete your furniture purchase with secure checkout and multiple payment options.',
           keywords: ['checkout', 'buy furniture'],
           canonicalUrl: `${this.baseUrl}/checkout`
@@ -159,20 +159,38 @@ export class SEOService {
 
       case 'CUSTOM_FURNITURE':
         return {
-          title: 'Custom Furniture - A1 Furniture Studio | Made to Order',
+          title: 'Custom Furniture - Velora Craft | Made to Order',
           description: 'Get custom-made furniture designed to your exact specifications. Premium quality craftsmanship with factory direct pricing. Free consultation available.',
           keywords: ['custom furniture', 'made to order furniture', 'bespoke furniture Mumbai'],
           canonicalUrl: `${this.baseUrl}/custom-furniture`,
-          ogImage: `${this.baseUrl}/images/og-custom.jpg`
+          ogImage: `${this.baseUrl}/velora-logo.png`
         };
 
       case 'REPAIR_POLISH':
         return {
-          title: 'Furniture Repair & Polish Services - A1 Furniture Studio',
+          title: 'Furniture Repair & Polish Services - Velora Craft',
           description: 'Professional furniture repair and polish services in Mumbai. Restore your furniture to its original glory with expert craftsmanship.',
           keywords: ['furniture repair', 'furniture polish', 'furniture restoration Mumbai'],
           canonicalUrl: `${this.baseUrl}/repair-polish`,
-          ogImage: `${this.baseUrl}/images/og-repair.jpg`
+          ogImage: `${this.baseUrl}/velora-logo.png`
+        };
+
+      case 'POLISH':
+        return {
+          title: 'Professional Furniture Polish Services - Velora Craft',
+          description: 'Expert furniture polishing services in Mumbai. Restore shine and elegance to your wooden furniture with basic polish, deep polish, gloss finish & more.',
+          keywords: ['furniture polish', 'wood polishing Mumbai', 'furniture refinishing', 'duco polish', 'matte finish'],
+          canonicalUrl: `${this.baseUrl}/polish`,
+          ogImage: `${this.baseUrl}/velora-logo.png`
+        };
+
+      case 'REPAIR':
+        return {
+          title: 'Expert Furniture Repair Services - Velora Craft',
+          description: 'Professional furniture repair in Mumbai. Fix broken legs, wobbly joints, wood damage & more. Expert craftsmen, quick turnaround.',
+          keywords: ['furniture repair', 'wood repair Mumbai', 'chair repair', 'table repair', 'furniture restoration'],
+          canonicalUrl: `${this.baseUrl}/repair`,
+          ogImage: `${this.baseUrl}/velora-logo.png`
         };
 
       case 'SEARCH':
@@ -180,15 +198,15 @@ export class SEOService {
 
       case 'SHIPPING_POLICY':
         return {
-          title: 'Shipping Policy - A1 Furniture Studio | Free Delivery in Mumbai',
-          description: 'Learn about A1 Furniture Studio shipping and delivery policy. Free delivery across Mumbai, pan-India shipping available. Safe packaging and room placement included.',
+          title: 'Shipping Policy - Velora Craft | Free Delivery in Mumbai',
+          description: 'Learn about Velora Craft shipping and delivery policy. Free delivery across Mumbai, pan-India shipping available. Safe packaging and room placement included.',
           keywords: ['shipping policy', 'furniture delivery Mumbai', 'free delivery', 'furniture shipping'],
           canonicalUrl: `${this.baseUrl}/shipping-policy`
         };
 
       case 'RETURN_POLICY':
         return {
-          title: 'Return & Refund Policy - A1 Furniture Studio',
+          title: 'Return & Refund Policy - Velora Craft',
           description: 'Easy 7-day returns on damaged or defective products. Free pickup, full refund on eligible returns. Read our complete return and refund policy.',
           keywords: ['return policy', 'refund policy', 'furniture returns', 'exchange policy'],
           canonicalUrl: `${this.baseUrl}/return-policy`
@@ -196,7 +214,7 @@ export class SEOService {
 
       case 'WARRANTY':
         return {
-          title: 'Warranty Information - A1 Furniture Studio | Up to 5-Year Warranty',
+          title: 'Warranty Information - Velora Craft | Up to 5-Year Warranty',
           description: 'Up to 5-year warranty on solid wood furniture. Learn about coverage, claim process, and furniture care tips. Manufacturing defects fully covered.',
           keywords: ['furniture warranty', 'warranty claim', 'furniture guarantee', 'warranty coverage'],
           canonicalUrl: `${this.baseUrl}/warranty`
@@ -204,31 +222,15 @@ export class SEOService {
 
       case 'FAQ':
         return {
-          title: 'FAQ - A1 Furniture Studio | Frequently Asked Questions',
-          description: 'Find answers to common questions about orders, delivery, returns, warranty, and custom furniture at A1 Furniture Studio.',
+          title: 'FAQ - Velora Craft | Frequently Asked Questions',
+          description: 'Find answers to common questions about orders, delivery, returns, warranty, and custom furniture at Velora Craft.',
           keywords: ['FAQ', 'frequently asked questions', 'furniture help', 'customer support'],
           canonicalUrl: `${this.baseUrl}/faq`
         };
 
-      case 'LOGIN':
-        return {
-          title: 'Login - A1 Furniture Studio',
-          description: 'Sign in to your A1 Furniture Studio account to track orders, manage wishlist, and more.',
-          keywords: ['login', 'sign in', 'account'],
-          canonicalUrl: `${this.baseUrl}/login`
-        };
-
-      case 'REGISTER':
-        return {
-          title: 'Create Account - A1 Furniture Studio',
-          description: 'Create your A1 Furniture Studio account to shop premium furniture, track orders, and save your favorites.',
-          keywords: ['register', 'sign up', 'create account'],
-          canonicalUrl: `${this.baseUrl}/register`
-        };
-
       case 'NOT_FOUND':
         return {
-          title: 'Page Not Found - A1 Furniture Studio',
+          title: 'Page Not Found - Velora Craft',
           description: 'The page you are looking for does not exist.',
           keywords: ['404', 'page not found'],
           canonicalUrl: this.baseUrl
@@ -236,7 +238,7 @@ export class SEOService {
 
       default:
         return {
-          title: 'A1 Furniture Studio - Premium Furniture in Mumbai',
+          title: 'Velora Craft - Premium Furniture in Mumbai',
           description: 'Premium quality furniture at factory direct prices.',
           keywords: ['furniture', 'Mumbai'],
           canonicalUrl: this.baseUrl
@@ -335,7 +337,7 @@ export class SEOService {
   private generateProductMeta(product?: ProductDetail): PageMeta {
     if (!product) {
       return {
-        title: 'Product - A1 Furniture Studio',
+        title: 'Product - Velora Craft',
         description: 'View product details',
         keywords: ['furniture'],
         canonicalUrl: this.baseUrl
@@ -343,7 +345,7 @@ export class SEOService {
     }
 
     const price = product.discountPrice || product.price;
-    const title = `${product.name} - A1 Furniture Studio | ₹${price.toLocaleString('en-IN')}`;
+    const title = `${product.name} - Velora Craft | ₹${price.toLocaleString('en-IN')}`;
     const description = product.shortDescription || product.description.substring(0, 160);
 
     return {
@@ -364,7 +366,7 @@ export class SEOService {
   private generateCategoryMeta(category?: Category | string): PageMeta {
     if (!category) {
       return {
-        title: 'Category - A1 Furniture Studio',
+        title: 'Category - Velora Craft',
         description: 'Browse furniture by category',
         keywords: ['furniture category'],
         canonicalUrl: this.baseUrl
@@ -377,7 +379,7 @@ export class SEOService {
       : category.slug;
 
     return {
-      title: `${categoryName} - A1 Furniture Studio | Premium ${categoryName}`,
+      title: `${categoryName} - Velora Craft | Premium ${categoryName}`,
       description: `Browse our collection of premium ${categoryName.toLowerCase()}. Factory direct pricing, custom options available. Free delivery in Mumbai.`,
       keywords: [categoryName, `${categoryName} Mumbai`, `buy ${categoryName}`, 'furniture'],
       canonicalUrl: `${this.baseUrl}/category/${categorySlug}`,
@@ -389,8 +391,8 @@ export class SEOService {
     const searchQuery = query || '';
     return {
       title: searchQuery 
-        ? `Search Results for "${searchQuery}" - A1 Furniture Studio`
-        : 'Search - A1 Furniture Studio',
+        ? `Search Results for "${searchQuery}" - Velora Craft`
+        : 'Search - Velora Craft',
       description: searchQuery
         ? `Find furniture matching "${searchQuery}". Browse our collection of premium furniture.`
         : 'Search for furniture products',

@@ -1,4 +1,4 @@
-# A1 Furniture Studio - Deployment Guide
+# Velora Craft - Deployment Guide
 
 ## 🚀 Quick Start
 

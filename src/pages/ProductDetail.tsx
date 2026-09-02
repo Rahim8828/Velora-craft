@@ -167,11 +167,6 @@ export default function ProductDetail() {
                 alt={images[selectedImageIndex]?.alt || product.name}
                 className="w-full h-full object-cover"
               />
-              {hasDiscount && product.discountPercentage && (
-                <span className="absolute top-4 left-4 bg-red-500 text-white text-xs font-bold px-3 py-1.5 rounded-lg shadow-sm">
-                  {product.discountPercentage}% OFF
-                </span>
-              )}
               {/* Image nav arrows */}
               {images.length > 1 && (
                 <>
@@ -248,10 +243,7 @@ export default function ProductDetail() {
               <div className="flex items-baseline flex-wrap gap-x-3 gap-y-1">
                 <span className="text-3xl font-bold text-gray-900">₹{displayPrice.toLocaleString()}</span>
                 {hasDiscount && (
-                  <>
-                    <span className="text-lg text-gray-400 line-through">₹{product.price.toLocaleString()}</span>
-                    <span className="text-sm font-semibold text-green-600">{product.discountPercentage}% OFF</span>
-                  </>
+                  <span className="text-lg text-gray-400 line-through">₹{product.price.toLocaleString()}</span>
                 )}
               </div>
               {hasDiscount && (
