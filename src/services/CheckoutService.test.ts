@@ -1,7 +1,6 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { checkoutService } from './CheckoutService';
 import { cartService } from './CartService';
-import { authService } from './AuthService';
 import type { CartItem, Address, OrderData, Product } from '../models/types';
 
 describe('CheckoutService', () => {
@@ -47,12 +46,6 @@ describe('CheckoutService', () => {
     
     // Clear cart
     cartService.clearCart();
-    
-    // Logout any authenticated user
-    authService.logout();
-    
-    // Clear mock users
-    authService.clearMockUsers();
   });
 
   describe('initiateCheckout', () => {
@@ -190,31 +183,6 @@ describe('CheckoutService', () => {
       expect(order.paymentStatus).toBe('PENDING');
     });
 
-    it('should create order with authenticated user', async () => {
-      // Register and login user
-      await authService.register({
-        email: 'user@example.com',
-        password: 'password123',
-        name: 'Test User',
-      });
-
-      const orderData: OrderData = {
-        items: [mockCartItem],
-        deliveryAddress: validAddress,
-        contactInfo: {
-          email: 'user@example.com',
-          phone: '+91 9236312375',
-        },
-        paymentMethod: 'ONLINE',
-        isGuestCheckout: false,
-      };
-
-      const order = await checkoutService.submitOrder(orderData);
-
-      expect(order.userId).toBeDefined();
-      expect(order.paymentMethod).toBe('ONLINE');
-    });
-
     it('should include shipping cost for non-Mumbai addresses', async () => {
       const delhiAddress = { ...validAddress, city: 'Delhi' };
       const orderData: OrderData = {
@@ -310,36 +278,6 @@ describe('CheckoutService', () => {
     it('should return empty array for guest users', () => {
       const orders = checkoutService.getOrders();
       expect(orders).toEqual([]);
-    });
-
-    it('should return orders for authenticated user', async () => {
-      // Register and login user
-      const registerResult = await authService.register({
-        email: 'user@example.com',
-        password: 'password123',
-        name: 'Test User',
-      });
-
-      expect(registerResult.success).toBe(true);
-
-      // Create an order
-      const orderData: OrderData = {
-        items: [mockCartItem],
-        deliveryAddress: validAddress,
-        contactInfo: {
-          email: 'user@example.com',
-          phone: '+91 9236312375',
-        },
-        paymentMethod: 'COD',
-        isGuestCheckout: false,
-      };
-
-      const createdOrder = await checkoutService.submitOrder(orderData);
-      expect(createdOrder.userId).toBeDefined();
-
-      const orders = checkoutService.getOrders();
-      expect(orders).toHaveLength(1);
-      expect(orders[0].userId).toBe(createdOrder.userId);
     });
   });
 

@@ -4,13 +4,11 @@ import { BrowserRouter } from 'react-router-dom';
 import CheckoutPage from './CheckoutPage';
 import { cartService } from '../services/CartService';
 import { checkoutService } from '../services/CheckoutService';
-import { authService } from '../services/AuthService';
 import type { Cart, Order } from '../models/types';
 
 // Mock services
 vi.mock('../services/CartService');
 vi.mock('../services/CheckoutService');
-vi.mock('../services/AuthService');
 
 // Mock useNavigate and useLocation
 const mockNavigate = vi.fn();
@@ -70,8 +68,6 @@ describe('CheckoutPage', () => {
     vi.clearAllMocks();
     mockLocation.state = null; // Reset location state
     vi.mocked(cartService.getCart).mockReturnValue(mockCart);
-    vi.mocked(authService.isAuthenticated).mockReturnValue(false);
-    vi.mocked(authService.getCurrentUser).mockReturnValue(null);
     vi.mocked(checkoutService.calculateShipping).mockReturnValue(0);
   });
 
@@ -292,31 +288,6 @@ describe('CheckoutPage', () => {
       expect(screen.getByText('FREE')).toBeInTheDocument();
       expect(screen.getByText(/Free delivery in Mumbai/)).toBeInTheDocument();
     });
-  });
-
-  it('should prefill user data for authenticated users', () => {
-    const mockUser = {
-      id: 'user1',
-      email: 'user@example.com',
-      passwordHash: 'hash',
-      name: 'Test User',
-      phone: '9236312375',
-      addresses: [],
-      wishlist: [],
-      orders: [],
-      createdAt: new Date(),
-    };
-
-    vi.mocked(authService.isAuthenticated).mockReturnValue(true);
-    vi.mocked(authService.getCurrentUser).mockReturnValue(mockUser);
-
-    renderCheckoutPage();
-
-    const emailInput = screen.getByLabelText(/Email Address/) as HTMLInputElement;
-    const nameInput = screen.getByLabelText(/Full Name/) as HTMLInputElement;
-
-    expect(emailInput.value).toBe('user@example.com');
-    expect(nameInput.value).toBe('Test User');
   });
 
   it('should redirect to cart if cart is empty', () => {

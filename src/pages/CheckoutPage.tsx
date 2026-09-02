@@ -4,7 +4,6 @@ import { MapPin, ArrowRight, ArrowLeft, Banknote, CreditCard, Lock, Truck, Rotat
 import LazyImage from '../components/LazyImage';
 import { cartService } from '../services/CartService';
 import { checkoutService } from '../services/CheckoutService';
-import { authService } from '../services/AuthService';
 import { usePageMeta } from '../hooks/usePageMeta';
 import type { Cart, Address, ContactInfo, PaymentMethod, Order } from '../models/types';
 
@@ -61,7 +60,6 @@ const CheckoutPage = () => {
     } else {
       loadCart();
     }
-    prefillUserData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.state]);
 
@@ -85,21 +83,6 @@ const CheckoutPage = () => {
       console.error('Error loading cart:', error);
     } finally {
       setLoading(false);
-    }
-  };
-
-  const prefillUserData = () => {
-    const user = authService.getCurrentUser();
-    if (user) {
-      setContactInfo({
-        email: user.email,
-        phone: user.phone || '',
-      });
-      setDeliveryAddress((prev) => ({
-        ...prev,
-        fullName: user.name,
-        phone: user.phone || '',
-      }));
     }
   };
 
@@ -147,7 +130,7 @@ const CheckoutPage = () => {
     setErrors({});
 
     try {
-      const isGuestCheckout = !authService.isAuthenticated();
+      const isGuestCheckout = true;
       const order = await checkoutService.submitOrder({
         items: cart.items,
         deliveryAddress,

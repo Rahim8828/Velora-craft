@@ -10,7 +10,7 @@ import type {
   PaymentStatus,
 } from '../models/types';
 import { cartService } from './CartService';
-import { authService } from './AuthService';
+
 
 /**
  * CheckoutService handles checkout process and order creation
@@ -71,15 +71,11 @@ export class CheckoutService {
     // Calculate subtotal
     const subtotal = orderData.items.reduce((sum, item) => sum + item.itemTotal, 0);
 
-    // Get current user if authenticated
-    const currentUser = authService.getCurrentUser();
-    const userId = !orderData.isGuestCheckout && currentUser ? currentUser.id : undefined;
-
     // Create order
     const order: Order = {
       id: this.generateOrderId(),
       orderId: this.generateHumanReadableOrderId(),
-      userId,
+      userId: undefined,
       items: this.convertCartItemsToOrderItems(orderData.items),
       subtotal,
       shippingCost,
@@ -167,13 +163,7 @@ export class CheckoutService {
    * Returns empty array for guest users
    */
   getOrders(): Order[] {
-    const currentUser = authService.getCurrentUser();
-    if (!currentUser) {
-      return [];
-    }
-
-    const allOrders = this.loadOrders();
-    return allOrders.filter(order => order.userId === currentUser.id);
+    return [];
   }
 
   /**
