@@ -48,8 +48,37 @@ const CategoryPage = () => {
           productService.getAllCategories(),
           productService.getProductsByCategory(categorySlug),
         ]);
-        const currentCategory = cats.find((cat) => cat.slug === categorySlug);
-        setCategory(currentCategory || null);
+        
+        let currentCategory = cats.find(
+          (cat) => cat.slug === categorySlug || cat.slug.replace(/-/g, ' ') === categorySlug.replace(/-/g, ' ')
+        );
+
+        if (!currentCategory && (categorySlug.includes('sofa') || categorySlug === 'sofas')) {
+          const sofaCat = cats.find((cat) => cat.slug === 'sofa-sets');
+          currentCategory = sofaCat || {
+            id: 'cat-sofas',
+            name: 'Sofa Sets & Seating',
+            slug: categorySlug,
+            imageUrl: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&h=300&fit=crop',
+            productCount: categoryProducts.length,
+          };
+        }
+
+        if (!currentCategory) {
+          // Dynamic fallback category object
+          const formattedName = categorySlug
+            .replace(/[-_]/g, ' ')
+            .replace(/\b\w/g, (l) => l.toUpperCase());
+          currentCategory = {
+            id: `cat-${categorySlug}`,
+            name: formattedName,
+            slug: categorySlug,
+            imageUrl: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&h=300&fit=crop',
+            productCount: categoryProducts.length,
+          };
+        }
+
+        setCategory(currentCategory);
         setProducts(categoryProducts);
       } catch (error) {
         console.error('Error loading category data:', error);

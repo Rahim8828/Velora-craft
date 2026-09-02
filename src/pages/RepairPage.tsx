@@ -1,7 +1,8 @@
 import { useState, type FormEvent } from 'react';
-import { Wrench, Hammer, Shield, Truck, CheckCircle, Phone, MessageCircle, Mail, Clock, Award } from 'lucide-react';
+import { Wrench, Hammer, Shield, Truck, CheckCircle, Phone, MessageCircle, Mail, Clock, Award, ShoppingCart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { usePageMeta } from '../hooks/usePageMeta';
+import { cartService } from '../services/CartService';
 
 interface RepairFormData {
   name: string;
@@ -15,6 +16,189 @@ interface RepairFormData {
   address: string;
   notes: string;
 }
+
+const sofaUpholsteryServices = [
+  {
+    id: 'srv-sofa-fabric-change',
+    title: 'Sofa Fabric Change',
+    rating: 4.8,
+    reviews: 0,
+    price: '₹8,999',
+    features: [
+      'Fabric removal and frame inspection',
+      'Premium fabric application',
+      'Finishing and edge stitching',
+      'Protective spray coating'
+    ],
+    image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&h=300&fit=crop',
+    slug: 'sofa-fabric-change'
+  },
+  {
+    id: 'srv-sofa-cushion-repair',
+    title: 'Sofa Cushion Repair',
+    rating: 4.7,
+    reviews: 0,
+    price: '₹2,999',
+    features: [
+      'Seam inspection and reinforcement',
+      'Patch repair or replacement',
+      'Partial filling with foam',
+      'Quality finish'
+    ],
+    image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&h=300&fit=crop',
+    slug: 'sofa-cushion-repair'
+  },
+  {
+    id: 'srv-sofa-foam-replacement',
+    title: 'Sofa Foam Replacement',
+    rating: 4.8,
+    reviews: 0,
+    price: '₹4,999',
+    features: [
+      'Old foam removal',
+      'High-density memory foam installation',
+      'Professional compression testing',
+      'Fabric re-fitting'
+    ],
+    image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&h=300&fit=crop',
+    slug: 'sofa-foam-replacement'
+  },
+  {
+    id: 'srv-sofa-leather-repair',
+    title: 'Sofa Leather/Rexine Repair',
+    rating: 4.7,
+    reviews: 0,
+    price: '₹3,999',
+    features: [
+      'Deep cleaning and degreasing',
+      'Crack and tear sealing',
+      'Discoloration removal',
+      'Protective wax conditioning'
+    ],
+    image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&h=300&fit=crop',
+    slug: 'sofa-leather-rexine-repair'
+  },
+  {
+    id: 'srv-sofa-wooden-frame-repair',
+    title: 'Sofa Wooden Frame Repair',
+    rating: 4.7,
+    reviews: 0,
+    price: '₹5,999',
+    features: [
+      'Structural inspection and assessment',
+      'Joint tightening with reinforcement',
+      'Crack filling and wood treatment',
+      'Protective finish application'
+    ],
+    image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&h=300&fit=crop',
+    slug: 'sofa-wooden-frame-repair'
+  },
+  {
+    id: 'srv-sofa-recliner-repair',
+    title: 'Sofa Recliner Mechanism Repair',
+    rating: 4.8,
+    reviews: 0,
+    price: '₹4,499',
+    features: [
+      'Mechanical system diagnosis',
+      'Cable or spring replacement',
+      'Motor lubrication and testing',
+      'Lever or button adjustment'
+    ],
+    image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&h=300&fit=crop',
+    slug: 'sofa-recliner-mechanism-repair'
+  },
+  {
+    id: 'srv-sofa-comprehensive-refinishing',
+    title: 'Sofa Comprehensive Refinishing',
+    rating: 4.8,
+    reviews: 0,
+    price: '₹6,999',
+    features: [
+      'Deep professional cleaning',
+      'Stain and spot removal',
+      'Surface sanding (if wooden)',
+      'Protective varnish/lacquer application'
+    ],
+    image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&h=300&fit=crop',
+    slug: 'sofa-comprehensive-refinishing'
+  },
+  {
+    id: 'srv-complete-sofa-upholstery',
+    title: 'Complete Sofa Upholstery Service',
+    rating: 4.8,
+    reviews: 0,
+    price: '₹11,999',
+    features: [
+      'Complete frame inspection',
+      'Fabric removal and new application',
+      'Cushion assessment and repair',
+      'Professional finishing touches'
+    ],
+    image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&h=300&fit=crop',
+    slug: 'complete-sofa-upholstery-service'
+  },
+  {
+    id: 'srv-office-chair-repair',
+    title: 'Office Chair Repair',
+    rating: 4.7,
+    reviews: 0,
+    price: '₹2,499',
+    features: [
+      'Base and wheel inspection',
+      'Armrest repair and reinforcement',
+      'Seat cushion restoration',
+      'Upholstery patching'
+    ],
+    image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&h=300&fit=crop',
+    slug: 'office-chair-repair'
+  },
+  {
+    id: 'srv-dining-chair-repair',
+    title: 'Dining Chair Repair',
+    rating: 4.7,
+    reviews: 0,
+    price: '₹1,999',
+    features: [
+      'Wooden frame inspection and repair',
+      'Joint tightening with reinforcement',
+      'Seat upholstery restoration',
+      'Protective finish'
+    ],
+    image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&h=300&fit=crop',
+    slug: 'dining-chair-repair'
+  },
+  {
+    id: 'srv-chair-upholstery-change',
+    title: 'Chair Upholstery Change',
+    rating: 4.8,
+    reviews: 0,
+    price: '₹3,499',
+    features: [
+      'Old fabric removal',
+      'Frame inspection',
+      'New fabric application',
+      'Professional edge finishing'
+    ],
+    image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&h=300&fit=crop',
+    slug: 'chair-upholstery-change'
+  },
+  {
+    id: 'srv-cane-wicker-chair-repair',
+    title: 'Cane/Wicker Chair Repair',
+    rating: 4.7,
+    reviews: 0,
+    price: '₹2,999',
+    features: [
+      'Strand inspection and assessment',
+      'Damaged strand replacement',
+      'Frame joint tightening',
+      'Protective lacquer coating'
+    ],
+    image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&h=300&fit=crop',
+    slug: 'cane-wicker-chair-repair'
+  }
+];
 
 const repairServices = [
   {
@@ -285,6 +469,107 @@ export default function RepairPage() {
               <span className="text-sm font-medium">3-Month Warranty</span>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Sofa & Upholstery Section */}
+      <div className="mb-12">
+        <div className="flex items-center gap-3 mb-6">
+          <h2 className="text-2xl font-bold text-gray-900">Sofa & Upholstery</h2>
+          <span className="bg-gray-100 text-gray-600 text-xs font-semibold px-2.5 py-1 rounded-full border border-gray-200">
+            {sofaUpholsteryServices.length} services
+          </span>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-6">
+          {sofaUpholsteryServices.map((service) => (
+            <div
+              key={service.id}
+              className="bg-white rounded-2xl p-5 border border-gray-200 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between"
+            >
+              <div className="flex justify-between items-start gap-4">
+                {/* Left content */}
+                <div className="flex-1">
+                  <h3 className="font-bold text-gray-900 text-lg mb-1">{service.title}</h3>
+                  
+                  {/* Rating */}
+                  <div className="flex items-center gap-1.5 mb-3 text-xs text-gray-500">
+                    <span className="text-amber-500 font-bold flex items-center gap-0.5">
+                      ★ {service.rating}
+                    </span>
+                    <span>({service.reviews} reviews)</span>
+                  </div>
+
+                  {/* Price */}
+                  <div className="mb-4">
+                    <span className="text-xs text-gray-500">Starts at </span>
+                    <span className="font-bold text-gray-900 text-lg">{service.price}</span>
+                  </div>
+
+                  {/* Features list */}
+                  <ul className="space-y-1.5 mb-4 text-xs text-gray-600">
+                    {service.features.map((feature, i) => (
+                      <li key={i} className="flex items-start gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-1 flex-shrink-0" />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* View Details Link */}
+                  <Link
+                    to={`/product/${service.slug}`}
+                    className="text-xs font-semibold text-gray-900 hover:text-brand-600 underline block mt-2"
+                  >
+                    View details
+                  </Link>
+                </div>
+
+                {/* Right content (Image & Actions) */}
+                <div className="flex flex-col items-center gap-3 flex-shrink-0 w-32 md:w-36">
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className="w-32 h-20 md:w-36 md:h-24 object-cover rounded-xl border border-gray-100 shadow-sm"
+                  />
+
+                  {/* WhatsApp Book Button */}
+                  <a
+                    href={`https://wa.me/919236312375?text=${encodeURIComponent(`Hello! I would like to book the ${service.title} (${service.price}) service.`)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full bg-[#25D366] hover:bg-[#1DA851] text-white text-xs font-semibold py-2 px-3 rounded-lg flex items-center justify-center gap-1.5 transition-colors shadow-sm"
+                  >
+                    <MessageCircle className="w-4 h-4 fill-white" />
+                    <span>Book</span>
+                  </a>
+
+                  {/* Add Button */}
+                  <button
+                    onClick={async () => {
+                      try {
+                        await cartService.addItem(service.id, 1);
+                        alert(`Added ${service.title} to cart!`);
+                      } catch {
+                        alert(`Service added to cart!`);
+                      }
+                    }}
+                    className="w-full bg-white hover:bg-gray-50 text-gray-800 border border-gray-300 text-xs font-semibold py-1.5 px-3 rounded-lg flex items-center justify-center gap-1 transition-colors"
+                  >
+                    <ShoppingCart className="w-3.5 h-3.5" />
+                    <span>Add</span>
+                  </button>
+
+                  <Link
+                    to={`/product/${service.slug}`}
+                    className="text-[11px] text-blue-600 font-medium hover:underline"
+                  >
+                    View Details
+                  </Link>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
 

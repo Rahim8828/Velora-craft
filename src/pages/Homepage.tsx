@@ -25,16 +25,16 @@ import type { Product } from '../models/types';
 
 // ─── Shop by Category Circle Data ───────────────────────────────────
 const shopByCategory = [
-  { name: 'New Arrivals', image: '', link: '/category/sofa-sets', isNew: true },
-  { name: 'Sofas', image: sofaImg, link: '/category/sofa-sets' },
-  { name: 'Sofa Cum Beds', image: sofaCumbedImg, link: '/category/sofa-sets' },
-  { name: 'Recliners', image: reclinerImg, link: '/category/sofa-sets' },
+  { name: 'New Arrivals', image: '', link: '/category/sofas', isNew: true },
+  { name: 'Sofas', image: sofaImg, link: '/category/sofas' },
+  { name: 'Sofa Cum Beds', image: sofaCumbedImg, link: '/category/sofa-cum-bed' },
+  { name: 'Recliners', image: reclinerImg, link: '/category/recliners' },
   { name: 'Beds', image: bedImg, link: '/category/beds-mattresses' },
-  { name: 'Wardrobes', image: wardrobeImg, link: '/category/beds-mattresses' },
-  { name: 'TV Units', image: tvUnitImg, link: '/category/sofa-sets' },
-  { name: 'Tables', image: tableImg, link: '/category/sofa-sets' },
-  { name: 'Chairs', image: chairsImg, link: '/category/sofa-sets' },
-  { name: 'Lounge Chairs', image: loungeChairsImg, link: '/category/sofa-sets' },
+  { name: 'Wardrobes', image: wardrobeImg, link: '/category/wardrobes' },
+  { name: 'TV Units', image: tvUnitImg, link: '/category/tv-units' },
+  { name: 'Tables', image: tableImg, link: '/category/tables' },
+  { name: 'Chairs', image: chairsImg, link: '/category/sofa-chair-repair' },
+  { name: 'Lounge Chairs', image: loungeChairsImg, link: '/category/chairs' },
 ];
 
 const Homepage = () => {

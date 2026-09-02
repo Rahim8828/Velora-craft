@@ -31,7 +31,7 @@ export const mockCategories: Category[] = [
     name: 'Sofa & Chair Repair',
     slug: 'sofa-chair-repair',
     imageUrl: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop',
-    productCount: 1
+    productCount: 13
   },
   {
     id: 'cat-8',

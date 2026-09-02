@@ -53,29 +53,63 @@ export class ProductService {
 
   /**
    * Get all products belonging to a specific category
-   * Uses in-memory cache for better performance
+   * Centralized matching logic for category slugs and names
    */
   async getProductsByCategory(category: string): Promise<Product[]> {
-    const normalizedCategory = category.toLowerCase().trim();
-    
+    if (!category) return [];
+
+    const rawInput = category.toLowerCase().trim();
+    // Normalize input by replacing hyphens and underscores with spaces, removing special chars
+    const normalizedInput = rawInput.replace(/[-_]/g, ' ').replace(/[^\w\s]/g, '').trim();
+
     // Check cache first
-    const cached = this.categoryCache.get(normalizedCategory);
+    const cached = this.categoryCache.get(normalizedInput);
     if (cached && this.isCacheValid(cached.timestamp)) {
       return cached.data;
     }
 
     await this.delay(100);
-    
-    const products = mockProducts.filter(p => 
-      p.category.toLowerCase() === normalizedCategory
-    );
+
+    const isSofaQuery = 
+      normalizedInput === 'sofa' || 
+      normalizedInput === 'sofas' || 
+      normalizedInput.includes('sofa');
+
+    const products = mockProducts.filter(p => {
+      const catLower = p.category.toLowerCase();
+      const subLower = (p.subcategory || '').toLowerCase();
+      const nameLower = p.name.toLowerCase();
+      const slugLower = p.slug.toLowerCase();
+
+      // If querying for sofas (e.g. 'sofas', 'sofa-sets', 'sofa', etc.)
+      if (isSofaQuery) {
+        return (
+          catLower.includes('sofa') ||
+          subLower.includes('sofa') ||
+          nameLower.includes('sofa') ||
+          slugLower.includes('sofa')
+        );
+      }
+
+      // Check exact or partial match after stripping hyphens/spaces
+      const catNormalized = catLower.replace(/[-_]/g, ' ').replace(/[^\w\s]/g, '').trim();
+      const subNormalized = subLower.replace(/[-_]/g, ' ').replace(/[^\w\s]/g, '').trim();
+
+      return (
+        catNormalized === normalizedInput ||
+        catNormalized.includes(normalizedInput) ||
+        normalizedInput.includes(catNormalized) ||
+        subNormalized.includes(normalizedInput) ||
+        slugLower.includes(normalizedInput.replace(/\s+/g, '-'))
+      );
+    });
 
     // Cache the result
-    this.categoryCache.set(normalizedCategory, {
+    this.categoryCache.set(normalizedInput, {
       data: products,
       timestamp: Date.now()
     });
-    
+
     return products;
   }
 
